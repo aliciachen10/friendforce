@@ -1,4 +1,4 @@
-const { Profile } = require('../models');
+const {Event, Friend, Group, Invitation } = require('../models');
 //each of the ones defined in the typeDef needs a corresponding resolver
 //    profile: async (parent, { profileId }) => {
 //   return Profile.findOne({ _id: profileId });
@@ -8,40 +8,33 @@ const { Profile } = require('../models');
 
 const resolvers = {
   Query: {
-    profiles: async () => {
-      return Profile.find();
+    events: async () => {
+      return Event.find();
     },
 
-    profile: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId });
+    event: async (parent, { eventId }) => {
+      return Event.findOne({ _id: eventId });
     },
   },
 
   Mutation: {
-    addProfile: async (parent, { name }) => {
-      return Profile.create({ name });
+    addEvent: async (parent, { name }) => {
+      return Event.create({ name });
     },
-    addSkill: async (parent, { profileId, skill }) => {
-      return Profile.findOneAndUpdate(
-        { _id: profileId },
-        {
-          $addToSet: { skills: skill },
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+    addFriend: async (parent, { name }) => {
+      return Friend.create({ name });
     },
-    removeProfile: async (parent, { profileId }) => {
-      return Profile.findOneAndDelete({ _id: profileId });
+    addGroup: async (parent, { name }) => {
+      return Group.create({ name });
     },
-    removeSkill: async (parent, { profileId, skill }) => {
-      return Profile.findOneAndUpdate(
-        { _id: profileId },
-        { $pull: { skills: skill } },
-        { new: true }
-      );
+    addInvitation: async (parent, { email }) => { //would this be the best way to create it, with the email? 
+      return Invitation.create({ email });
+    },
+    removeEvent: async (parent, { eventId }) => {
+      return Event.findOneAndDelete({ _id: eventId });
+    },
+    removeGroup: async (parent, { groupId }) => {
+      return Group.findOneAndDelete({ _id: groupId });
     },
   },
 };
