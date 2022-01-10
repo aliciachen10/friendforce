@@ -1,16 +1,28 @@
 
 import React, {useState} from 'react';
-
+import GroupList from '../groupsTab/groupList';
+import EventsList from '../eventsTab/eventsList';
+import FriendsList from '../friendsTab/friendslist';
 
 
 function Navbar() {
     
-    
+  const [changeTab, setChangeTab] = useState([""])
 
+  const handleFriendsTabClick = () => {
+    setChangeTab(<FriendsList/>)
+  }
+  const handleGroupsTabClick = () => {
+    setChangeTab(<GroupList/>)
+  }
+  const handleEventTabClick = () => {
+    setChangeTab(<EventsList/>)
+  }
+  
 
     return (
 
-       
+<div> 
 <nav className="bg-gray-800">
   <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div className="relative flex items-center justify-between h-16">
@@ -44,13 +56,13 @@ function Navbar() {
         </div>
         <div className="hidden sm:block sm:ml-6">
           <div className="flex space-x-4">
-            <a href="https://github.com/" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" >Dashboard</a>
+            <a href="#" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" >Dashboard</a>
 
-            <a href="https://github.com/" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Friends</a>
+            <a href="#" onClick={handleFriendsTabClick} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Friends</a>
 
-            <a href="https://github.com/" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Groups</a>
+            <a href="#" onClick={handleGroupsTabClick} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Groups</a>
 
-            <a href="https://github.com/" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Events</a>
+            <a href="#" onClick={handleEventTabClick} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Events</a>
           </div>
         </div>
       </div>
@@ -79,11 +91,11 @@ function Navbar() {
             Leaving: "transition ease-in duration-75"
               From: "transform opacity-100 scale-100"
               To: "transform opacity-0 scale-95" */}
-          <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" tabIndex="-1">
+          {/* <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" tabIndex="-1">
             <a href="https://github.com/" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-0">Your Profile</a>
             <a href="https://github.com/" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-1">Settings</a>
             <a href="https://github.com/" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-2">Sign out</a>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
@@ -101,8 +113,8 @@ function Navbar() {
     </div>
   </div>
 </nav>
-
-
+{changeTab}
+</div>
 
 
     )
