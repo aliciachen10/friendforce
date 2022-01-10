@@ -1,10 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import ActiveTab from './components/ActiveTab.js'
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="text-red-800 font-semibold text-4xl">
-      Tailwind Test!
+    <div >
+      <Navbar />
+      
+      <ActiveTab/>
+
+      <Footer/>
     </div>
   );
 }
