@@ -1,14 +1,18 @@
 
 import React, {useState} from 'react';
-import GroupList from '../groupsTab/groupList';
-import EventsList from '../eventsTab/eventsList';
-import FriendsList from '../friendsTab/friendslist';
-
+import ffLogo from '../../img/ff.png';
+import ffText from '../../img/ff_text.png';
 
 function Navbar(props) {
   const [navOpen, setNav] = useState(false);
 
+  const selectedTabClass = "bg-indigo-700 text-white px-3 py-2 top-0  rounded-md text-sm font-medium";
+  const unselectedTabClass = "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium";
+
   /* Tab onclick handlers that change parent tab state */
+  const handleDashboardTabClick = () => {
+    props.tabStateSetter("Dashboard")
+  }
   const handleFriendsTabClick = () => {
     props.tabStateSetter("Friends")
   }
@@ -45,18 +49,18 @@ function Navbar(props) {
           {/* Flex container for left navbar content (logo and tabs) */}
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center">
-              <img className="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow"></img>
-              <img className="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow"></img>
+              <img className="block lg:hidden h-8 w-auto" src={ffLogo} alt="ff_logo"></img>
+              <img className="hidden lg:block h-8 w-auto" src={ffText} alt="ff_logo_text"></img>
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-                <a href="#" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" >Dashboard</a>
+                <a href="#" onClick={handleDashboardTabClick} className={props.currTab === "Dashboard" ? selectedTabClass : unselectedTabClass} >Dashboard</a>
 
-                <a href="#" onClick={handleFriendsTabClick} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Friends</a>
+                <a href="#" onClick={handleFriendsTabClick} className = {props.currTab === "Friends" ? selectedTabClass : unselectedTabClass}>Friends</a>
 
-                <a href="#" onClick={handleGroupsTabClick} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Groups</a>
+                <a href="#" onClick={handleGroupsTabClick} className={props.currTab === "Groups" ? selectedTabClass : unselectedTabClass}>Groups</a>
 
-                <a href="#" onClick={handleEventTabClick} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Events</a>
+                <a href="#" onClick={handleEventTabClick} className={props.currTab === "Events" ? selectedTabClass : unselectedTabClass}>Events</a>
               </div>
             </div>
           </div>
