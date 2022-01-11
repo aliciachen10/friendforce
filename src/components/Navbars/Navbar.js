@@ -114,9 +114,6 @@ function Navbar(props) {
         </div>
       </div>
     </nav>
-
-
-
     )
 }
 
