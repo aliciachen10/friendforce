@@ -1,0 +1,59 @@
+[
+  {
+    "email": "jen.liebelt@gmail.com",
+    "status": ["tentative"]
+  },
+  {
+    "email": "jen.liebelt@gmail.com",
+    "status": ["pending"]
+  },
+  {
+    "email": "jen.liebelt@gmail.com",
+    "status": ["pending"]
+  },
+  {
+    "email": "jen.liebelt@gmail.com",
+    "status": ["rejected"]
+  },
+  {
+    "email": "jen.liebelt@gmail.com",
+    "status": ["accepted"]
+  },
+  {
+    "email": "andrewbumgarnernc@gmail.com",
+    "status": ["rejected"]
+  },
+  {
+    "email": "andrewbumgarnernc@gmail.com",
+    "status": ["rejected"]
+  },
+  {
+    "email": "andrewbumgarnernc@gmail.com",
+    "status": ["pending"]
+  },
+  {
+    "email": "andrewbumgarnernc@gmail.com",
+    "status": ["accepted"]
+  },
+  {
+    "email": "aliciachen@gmail.com",
+    "status": ["pending"]
+  },
+  {
+    "email": "aliciachen@gmail.com",
+    "status": ["accepted"]
+  },
+  {
+    "email": "jkohrt@gmail.com",
+    "status": ["accepted"]
+  },
+  {
+    "email": "jkohrt@gmail.com",
+    "status": ["accepted"]
+  },
+  {
+    "email": "jkohrt@gmail.com",
+    "status": ["tentative"]
+  }
+]
+

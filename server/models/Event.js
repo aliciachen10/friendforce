@@ -13,7 +13,6 @@ const eventSchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now,
     required: true
   },
   location: {
@@ -31,7 +30,11 @@ const eventSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Friend'
     }
-  ] //q: how should i indicate whether someone accepted, declined, etc.
+  ], //q: how should i indicate whether someone accepted, declined, etc.
+  creator: {
+    type: Schema.Types.ObjectId,
+    ref: 'Friend'
+  }
 });
 
 const Event = model('Event', eventSchema);

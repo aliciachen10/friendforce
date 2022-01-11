@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 //id, date created, contact name, contact email, status 
-const invitationSchema = new Schema({
+const invitationEventSchema = new Schema({
   date_created: {
     type: Date,
     default: Date.now
@@ -34,16 +34,16 @@ const invitationSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['pending', 'accepted', 'rejected'],
+    enum: ['pending', 'accepted', 'rejected', 'tentative'],
     trim: true,
     required: true
   },
-  group: {
+  event: {
       type: Schema.Types.ObjectId,
-      ref: 'Group'
+      ref: 'Event'
   }
 }); 
 
-const Invitation = model('Invitation', invitationSchema);
+const InvitationEvent = model('InvitationEvent', invitationEventSchema);
 
-module.exports = Invitation;
+module.exports = InvitationEvent;

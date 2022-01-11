@@ -1,4 +1,5 @@
-const {Event, Friend, Group, Invitation } = require('../models');
+const {Event, Friend, Group, InvitationEvent, InvitationGroup } = require('../models');
+// import {GraphQLDateTime} from "graphql-iso-date";
 
 const resolversRemove = {
   Query: {
@@ -41,36 +42,51 @@ const resolversRemove = {
 };
 
 const resolvers = {
+  // customScalarResolver: {
+  //   Date: GraphQLDateTime
+  // },
   Query: {
     events: async () => {
       return Event.find();
     },
-
-    event: async (parent, { eventId }) => {
-      return Event.findOne({ _id: eventId });
+    friends: async () => {
+      return Friend.find();
     },
+    groups: async () => {
+      return Group.find();
+    },
+    invitationEvents: async () => {
+      return InvitationEvent.find();
+    },
+    invitationGroups: async () => {
+      return InvitationGroup.find();
+    },
+
+    // event: async (parent, { eventId }) => {
+    //   return Event.findOne({ _id: eventId });
+    // },
   },
 
-  Mutation: {
-    addEvent: async (parent, { name }) => {
-      return Event.create({ name });
-    },
-    addFriend: async (parent, { name }) => {
-      return Friend.create({ name });
-    },
-    addGroup: async (parent, { name }) => {
-      return Group.create({ name });
-    },
-    addInvitation: async (parent, { email }) => { //would this be the best way to create it, with the email? 
-      return Invitation.create({ email });
-    },
-    removeEvent: async (parent, { eventId }) => {
-      return Event.findOneAndDelete({ _id: eventId });
-    },
-    removeGroup: async (parent, { groupId }) => {
-      return Group.findOneAndDelete({ _id: groupId });
-    },
-  },
+  // Mutation: {
+  //   addEvent: async (parent, { name }) => {
+  //     return Event.create({ name });
+  //   },
+  //   addFriend: async (parent, { name }) => {
+  //     return Friend.create({ name });
+  //   },
+  //   addGroup: async (parent, { name }) => {
+  //     return Group.create({ name });
+  //   },
+  //   addInvitation: async (parent, { email }) => { //would this be the best way to create it, with the email? 
+  //     return Invitation.create({ email });
+  //   },
+  //   removeEvent: async (parent, { eventId }) => {
+  //     return Event.findOneAndDelete({ _id: eventId });
+  //   },
+  //   removeGroup: async (parent, { groupId }) => {
+  //     return Group.findOneAndDelete({ _id: groupId });
+  //   },
+  // },
 };
 
 module.exports = resolvers;
