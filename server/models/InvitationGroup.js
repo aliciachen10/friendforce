@@ -1,10 +1,12 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 //id, date created, contact name, contact email, status 
 const invitationGroupSchema = new Schema({
   date_created: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
   },
   // invitee: { //should this entire invitationSchema be identified primarily via email? 
   //   type: String,

@@ -41,7 +41,7 @@ const typeDefs = gql`
   type Friend {
     _id: ID 
     name: String
-
+    date_created: Date
     address: String
     email: String
     phone: String 
@@ -55,7 +55,7 @@ const typeDefs = gql`
   type Group {
     _id: ID
     name: String
-
+    date_created: Date 
     description: String 
     friends: [String] 
     events: [String] 
@@ -63,7 +63,7 @@ const typeDefs = gql`
   }
 
   type InvitationEvent {
-
+    date_created: Date 
     invitee: String 
     inviter: String 
     email: String 
@@ -72,7 +72,7 @@ const typeDefs = gql`
   }
 
   type InvitationGroup {
-
+    date_created: Date 
     invitee: String 
     inviter: String 
     email: String 
@@ -81,6 +81,7 @@ const typeDefs = gql`
   }
 
   type Query {
+    event: Event
     events: [Event]
     friends: [Friend]
     groups: [Group]
@@ -88,7 +89,19 @@ const typeDefs = gql`
     invitationGroups: [InvitationGroup]
   }
 
+  type Mutation {
+    addEvent(name: String!): Event
+    addFriend(name: String!): Friend
+    addGroup(name: String!): Group
+    addInvitationGroup(email: String!): InvitationGroup 
+    addInvitationEvent(email: String!): InvitationEvent
+    removeGroup(groupId: ID!): Group
+    removeEvent(eventId: ID!): Event
+  }
+
 
 `;
+
+//to do: resolvers - addevent, addfriend, and addgroup might need to be changed so they can be added by ID
 
 module.exports = typeDefs;

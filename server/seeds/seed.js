@@ -1,39 +1,53 @@
-const db = require('../config/connection');
-const { School, Class, Professor } = require('../models');
+const db = require("../config/connection");
+const {
+  Event,
+  Friend,
+  Group,
+  InvitationEvent,
+  InvitationGroup,
+} = require("../models");
 
-const schoolData = require('./schoolData.json');
-const classData = require('./classData.json');
-const professorData = require('./professorData.json');
+const eventData = require("./eventData.json");
+const friendData = require("./friendData.json");
+const groupData = require("./groupData.json");
+const invitationEventData = require('./invitationEventData.json');
+const invitationGroupData = require('./invitationGroupData.json');
 
-db.once('open', async () => {
+db.once("open", async () => {
   // clean database
-  await School.deleteMany({});
-  await Class.deleteMany({});
-  await Professor.deleteMany({});
+  await Event.deleteMany({});
+  await Friend.deleteMany({});
+  await Group.deleteMany({});
+  await InvitationEvent.deleteMany({});
+  await InvitationGroup.deleteMany({});
 
   // bulk create each model
-  const schools = await School.insertMany(schoolData);
-  const classes = await Class.insertMany(classData);
-  const professors = await Professor.insertMany(professorData);
+  const events = await Event.insertMany(eventData);
+  const friends = await Friend.insertMany(friendData);
+  const groups = await Group.insertMany(groupData);
+  const invitationEvents = await InvitationEvent.insertMany(invitationEventData);
+  const invitationGroups = await InvitationGroup.insertMany(invitationGroupData);
 
-  for (newClass of classes) {
-    // randomly add each class to a school
-    const tempSchool = schools[Math.floor(Math.random() * schools.length)];
-    tempSchool.classes.push(newClass._id);
-    await tempSchool.save();
+  //to do: will need to seed the info for each of the invitations
 
-    // randomly add a professor to each class -- randomly add a friend to each group (or group to each friend?)
-    // randomly add a friend to each event 
-    const tempProfessor = professors[Math.floor(Math.random() * professors.length)];
-    newClass.professor = tempProfessor._id;
-    await newClass.save();
+  for (newFriend of friends) {
+    // for (newClass of classes) {
+    //randomly add friends to each event
+    const tempEvent = events[Math.floor(Math.random() * events.length)];
+    tempEvent.invitees.push(newFriend._id);
+    friends[Math.floor(Math.random() * friends.length)]
+    //await InvitationEvent.create({invitee: newFriend._id, inviter: ____})
+    //mongoose create a new document -- add the event object id = tempEvent, the the invitee = newFriend._id
+    //the inviter = anotherFriend._id that's not the existing newFriend._id
 
-    // reference class on professor model, too -- reference groups on each friend model, friends on each group model
-    // reference friends on each event model and events on each friend model 
-    tempProfessor.classes.push(newClass._id);
-    await tempProfessor.save();
+    await tempEvent.save();
+
+    //randomly add friends to each group
+    const tempGroup = groups[Math.floor(Math.random() * groups.length)];
+    tempGroup.friends.push(newFriend._id);
+    await tempGroup.save();
   }
 
-  console.log('all done!');
+  console.log("all done!");
   process.exit(0);
 });

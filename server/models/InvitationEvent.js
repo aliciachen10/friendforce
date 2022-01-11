@@ -1,10 +1,12 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 //id, date created, contact name, contact email, status 
 const invitationEventSchema = new Schema({
   date_created: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
   },
   // invitee: { //should this entire invitationSchema be identified primarily via email? 
   //   type: String,
@@ -26,7 +28,6 @@ const invitationEventSchema = new Schema({
   },
   email: {
     type: String,
-    unique: true,
     required: true,
     trim: true,
     //use a regex to match below here
@@ -34,7 +35,7 @@ const invitationEventSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['pending', 'accepted', 'rejected', 'tentative'],
+    enum: ["pending", "accepted", "rejected", "tentative"],
     trim: true,
     required: true
   },

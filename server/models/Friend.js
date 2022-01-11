@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 // fields are name, date created, address, phone number, email, and can be connected to the group the contact is in
 //q: are friends going to be able to friend each other, or is their only linkage through the groups they are in? 
 const friendSchema = new Schema({
@@ -9,7 +10,8 @@ const friendSchema = new Schema({
   },
   date_created: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
   },
   address: {
     type: String,
