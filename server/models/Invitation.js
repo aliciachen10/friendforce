@@ -6,10 +6,23 @@ const invitationSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  name: {
-    type: String,
-    required: true,
-    trim: true,
+  // invitee: { //should this entire invitationSchema be identified primarily via email? 
+  //   type: String,
+  //   required: true,
+  //   trim: true,
+  // },
+  // inviter: { //should inviter be identified by email? 
+  //   type: String,
+  //   required: true,
+  //   trim: true,
+  // },
+  invitee: {
+      type: Schema.Types.ObjectId,
+      ref: 'Friend'
+  },
+  inviter: {
+    type: Schema.Types.ObjectId,
+    ref: 'Friend'
   },
   email: {
     type: String,
@@ -25,7 +38,11 @@ const invitationSchema = new Schema({
     trim: true,
     required: true
   },
-});
+  group: {
+      type: Schema.Types.ObjectId,
+      ref: 'Group'
+  }
+}); 
 
 const Invitation = model('Invitation', invitationSchema);
 

@@ -24,7 +24,14 @@ const eventSchema = new Schema({
   description: {
     type: String,
     trim: true,
-  }
+  },
+  //groups: [Group], //this could be optional (invite a group rather than invite a friend)
+  invitees: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Friend'
+    }
+  ] //q: how should i indicate whether someone accepted, declined, etc.
 });
 
 const Event = model('Event', eventSchema);

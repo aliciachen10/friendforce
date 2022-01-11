@@ -7,6 +7,16 @@ const typeDefs = gql`
     name: String
     skills: [String]!
   }
+  
+  type Event {
+    _id: ID
+    name: String 
+    date_created: Date
+    date: Date
+    location: String
+    description: String 
+    //do i include groups and invitees here? 
+  }
 
   type Query {
     profiles: [Profile]!
