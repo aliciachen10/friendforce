@@ -22,12 +22,6 @@ const groupSchema = new Schema({
       ref: 'Friend'
     }
   ],
-  events: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Event'
-    }
-  ],
   interests: {
     type: Array
   }

@@ -58,7 +58,6 @@ const typeDefs = gql`
     date_created: Date 
     description: String 
     friends: [String] 
-    events: [String] 
     interests: [String] 
   }
 
