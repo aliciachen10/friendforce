@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Come chill and learn about data science",
+    "date": "2022-02-01",
+    "location": "Data Science Institute",
+    "description": "come learn data science with the data science group"
+  },
+  {
+    "name": "Bootcamp end party",
+    "date": "2022-03-01",
+    "location": "Jubala Coffee",
+    "description": "this is a giant party to celebrate the end of coding bootcamp"
+  },
+  {
+    "name": "C for Programmers",
+    "date": "2022-06-06",
+    "location": "Raulston Arboretum",
+    "description": "we like C-ding the plants to make sure that they germinate"
+  },
+  {
+    "name": "C++ for Programmers",
+    "date": "2022-01-25",
+    "location": "Raulston Arboretum++",
+    "description": "bdsm apprecation for those of us who enjoy ++ing our C"
+  }
+]
