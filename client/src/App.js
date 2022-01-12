@@ -1,23 +1,21 @@
+import React, {useState} from 'react';
+
 import logo from './logo.svg';
 import './App.css';
+import ActiveTab from './components/ActiveTab.js'
+import Navbar from './components/Navbars/Navbar';
+import GroupList from './components/groupsTab/groupList';
+import Footer from './components/Footer';
+
+
 
 function App() {
+  const [currentTab, setTab] = useState("Dashboard");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <Navbar tabStateSetter = {setTab} currTab = {currentTab}/>
+      <ActiveTab currTab = {currentTab}/>
     </div>
   );
 }
