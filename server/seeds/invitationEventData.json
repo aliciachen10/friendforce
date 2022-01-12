@@ -1,0 +1,19 @@
+[
+  {
+    "email": "jen.liebelt@gmail.com",
+    "status": "tentative"
+  },
+  {
+    "email": "andrewbumgarnernc@gmail.com",
+    "status": "rejected"
+  },
+  {
+    "email": "aliciachen@gmail.com",
+    "status": "pending"
+  },
+  {
+    "email": "jkohrt@gmail.com",
+    "status": "accepted"
+  }
+]
+
