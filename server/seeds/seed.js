@@ -36,7 +36,7 @@ db.once("open", async () => {
     const tempEvent = events[Math.floor(Math.random() * events.length)];
     tempEvent.invitees.push(newFriend._id);
     // friends[Math.floor(Math.random() * friends.length)]
-    //await InvitationEvent.create({invitee: newFriend._id, inviter: ____})
+    // await InvitationEvent.create({invitee: newFriend._id, })
     //mongoose create a new document -- add the event object id = tempEvent, the the invitee = newFriend._id
     //the inviter = anotherFriend._id that's not the existing newFriend._id
 
