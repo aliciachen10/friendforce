@@ -28,7 +28,6 @@ const invitationEventSchema = new Schema({
   },
   email: {
     type: String,
-    required: true,
     trim: true,
     //use a regex to match below here
     match: [/.+@.+\..+/, "Please enter a valid e-mail address"]

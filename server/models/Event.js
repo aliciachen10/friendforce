@@ -28,7 +28,7 @@ const eventSchema = new Schema({
     trim: true,
   },
   //groups: [Group], //this could be optional (invite a group rather than invite a friend)
-  invitees: [
+  friends: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Friend'
