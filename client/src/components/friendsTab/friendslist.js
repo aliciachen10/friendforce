@@ -8,9 +8,7 @@ function FriendsList(props) {
 
   const handleFriendPageClick = () => {
 
-    
-
-}
+  }
 
 
   return (
