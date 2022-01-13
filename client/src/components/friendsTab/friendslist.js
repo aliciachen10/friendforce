@@ -1,4 +1,17 @@
-function FriendsList() {
+import React, {useState} from "react";
+
+function FriendsList(props) {
+
+
+const {friendPage, setFriendPage} = useState(false);
+
+
+  const handleFriendPageClick = () => {
+
+    
+
+}
+
 
   return (
     <div className="flex flex-col">
@@ -55,7 +68,7 @@ function FriendsList() {
                     Admin
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <a href="#" className="text-indigo-600 hover:text-indigo-900">Edit</a>
+                    <a href="#" onClick={handleFriendPageClick}  className="text-indigo-600 hover:text-indigo-900">Go To Friend</a>
                   </td>
                 </tr>
               </tbody>

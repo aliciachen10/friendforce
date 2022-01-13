@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import FriendsList from './friendsTab/friendslist';
 import GroupList from './groupsTab/groupList'
 import EventsList from './eventsTab/eventsList';
-
+// import MainFriends from './friendsTab/mainFriends'; main friends should be in place of friendslist
 
 function ActiveTab(props) {
     function chooseTab(tabName) {
