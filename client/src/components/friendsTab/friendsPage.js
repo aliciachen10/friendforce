@@ -1,4 +1,4 @@
-import { PaperClipIcon } from '@heroicons/react/solid'
+//import { PaperClipIcon } from '@heroicons/react/solid'
 import FriendsCard from './friendCard'
 
 
@@ -212,12 +212,11 @@ function FriendsPage () {
   }
   
 
-return (
+  return (
 
 
 
-<div> 
-
+  <div> 
     <nav className="h-full overflow-y-auto" aria-label="Directory">
       {Object.keys(directory).map((letter) => (
         <div key={letter} className="relative">
@@ -248,7 +247,7 @@ return (
     </nav>
   
 
-<FriendsCard/>
+    {/* <FriendsCard/> */}
 
 
 
@@ -258,7 +257,7 @@ return (
 }
 
     
-export default FriendsPage
+export default FriendsPage;
 
 
 

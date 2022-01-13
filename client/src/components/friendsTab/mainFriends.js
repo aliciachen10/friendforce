@@ -1,31 +1,26 @@
 import { useState } from "react";
-import FriendsList from "./friendslist";
-import FriendsPage from "./friendspage";
+import FriendsList from "./friendsList";
+import FriendsPage from "./friendsPage";
 
 
+function MainFriends () {
 
-
- function MainFriends (props) {
-
-    const {friendState, setFriendState} = useState("friendlist")
+    const {friendState, setFriendState} = useState("friendpage");
 
     function chooseFriend(friendOption) {
         if(friendOption === "friendpage"){
-            return <FriendsPage setFriendState />
+            return <FriendsPage mainFriendSetter = {setFriendState} />
         }
         else if(friendOption === "friendlist") {
-            return <FriendsList setFriendState />
+            return <FriendsList/>
         }
     }
 
-
-return (
-
-    <div className>
-
-      {chooseFriend(friendState) }
-    </div>
-)
+    return (
+        <div className>
+            {console.log("friendpage")}
+        </div>
+    )
 
 
 }

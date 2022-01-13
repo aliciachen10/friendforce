@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import FriendsList from './friendsTab/friendslist';
+//import FriendsList from './friendsTab/mainFriends';
 import GroupList from './groupsTab/groupList'
 import EventsList from './eventsTab/eventsList';
-// import MainFriends from './friendsTab/mainFriends'; main friends should be in place of friendslist
+import MainFriends from './friendsTab/mainFriends';
 
 function ActiveTab(props) {
     function chooseTab(tabName) {
         if(tabName === "Friends"){
-            return <FriendsList/>
+            return <MainFriends/>
         }
         else if (tabName === "Groups") {
             return <GroupList/>

@@ -1,4 +1,4 @@
-import { PaperClipIcon } from '@heroicons/react/solid'
+//import { PaperClipIcon } from '@heroicons/react/solid'
 
 
 
@@ -7,7 +7,7 @@ import { PaperClipIcon } from '@heroicons/react/solid'
 function FriendsCard () {
 
   
-return (
+  return (
 
     <>
       <div>
@@ -96,7 +96,7 @@ return (
               <ul role="list" className="border border-gray-200 rounded-md divide-y divide-gray-200">
                 <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
                   <div className="w-0 flex-1 flex items-center">
-                    <PaperClipIcon className="flex-shrink-0 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    {/* <PaperClipIcon className="flex-shrink-0 h-5 w-5 text-gray-400" aria-hidden="true" /> */}
                     <span className="ml-2 flex-1 w-0 truncate">resume_back_end_developer.pdf</span>
                   </div>
                   <div className="ml-4 flex-shrink-0 flex space-x-4">
@@ -119,7 +119,7 @@ return (
                 </li>
                 <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
                   <div className="w-0 flex-1 flex items-center">
-                    <PaperClipIcon className="flex-shrink-0 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    {/* <PaperClipIcon className="flex-shrink-0 h-5 w-5 text-gray-400" aria-hidden="true" /> */}
                     <span className="ml-2 flex-1 w-0 truncate">coverletter_back_end_developer.pdf</span>
                   </div>
                   <div className="ml-4 flex-shrink-0 flex space-x-4">
@@ -150,7 +150,7 @@ return (
   )
 }
 
-export default FriendsCard
+export default FriendsCard;
 
 
 
