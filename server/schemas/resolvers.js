@@ -47,13 +47,13 @@ const resolvers = {
   // },
   Query: {
     events: async () => {
-      return Event.find();
+      return Event.find().populate('friends');
     },
     friends: async () => {
-      return Friend.find();
+      return Friend.find().populate('groups');
     },
     groups: async () => {
-      return Group.find();
+      return Group.find().populate('friends');
     },
     invitationEvents: async () => {
       return InvitationEvent.find();
@@ -62,7 +62,7 @@ const resolvers = {
       return InvitationGroup.find();
     },
     event: async (parent, { eventId }) => {
-      return Event.findOne({ _id: eventId });
+      return Event.findOne({ _id: eventId }).populate('friends');
     },
   },
 

@@ -28,7 +28,6 @@ const invitationGroupSchema = new Schema({
   },
   email: {
     type: String,
-    unique: true,
     required: true,
     trim: true,
     //use a regex to match below here
