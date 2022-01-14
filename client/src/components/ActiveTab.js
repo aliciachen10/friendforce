@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import GroupList from './groupsTab/groupList'
 import EventsList from './eventsTab/eventsList';
 import MainFriends from './friendsTab/mainFriends';
+import Dashboard from './dashboardTab/Dashboard'
 
 /*  ActiveTab.js
     The 'body' of the app below the navbar. The body 
@@ -12,18 +13,21 @@ import MainFriends from './friendsTab/mainFriends';
 function ActiveTab(props) {
     function chooseTab(tabName) {
         if(tabName === "Friends"){
-            return <MainFriends/>
+            return <MainFriends/>;
         }
         else if (tabName === "Groups") {
-            return <GroupList/>
+            return <GroupList/>;
         }
         else if (tabName === "Events" ) {
-            return <EventsList/>
+            return <EventsList/>;
+        }
+        else if (tabName === "Dashboard" ) {
+            return <Dashboard/>;
         }
     }
 
     return (  
-        <div className = "p-6">
+        <div className = "p-6 bg-gray-100 h-screen">
             {chooseTab(props.currTab)}
         </div>
     );
