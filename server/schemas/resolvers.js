@@ -50,7 +50,7 @@ const resolvers = {
       return Event.find().populate('friends');
     },
     friends: async () => {
-      return Friend.find().populate('groups');
+      return Friend.find().populate('groups').populate('events');
     },
     groups: async () => {
       return Group.find().populate('friends');
