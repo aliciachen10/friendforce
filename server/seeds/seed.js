@@ -41,10 +41,15 @@ db.once("open", async () => {
     )
 
     //add the same friend you added to the event to the invitationevent. 
-    await InvitationEvent.create({invitee: newFriend._id, event: tempEvent._id, status: "accepted", email: newFriend.email})
-    // if (count+1 < friends.length) {
-    //   await InvitationEvent.create({invitee: friends[count+1]._id, event: tempEvent._id, status: "pending", email: friends[count+1].email})
-    // }
+    if (count + 1 > friends.length) {
+      await InvitationEvent.create({invitee: newFriend._id, inviter: friends[0]._id, event: tempEvent._id, status: "accepted", email: newFriend.email})
+    } else { //inviter: friends[count+1]._id,
+      await InvitationEvent.create({invitee: newFriend._id, event: tempEvent._id, status: "accepted", email: newFriend.email})
+    }
+    if (count+1 < friends.length) {
+      await InvitationEvent.create({invitee: friends[count+1]._id, inviter: newFriend._id, event: tempEvent._id, status: "pending", email: friends[count+1].email})
+      await InvitationEvent.create({invitee: friends[count+1]._id, inviter: newFriend._id, event: tempEvent._id, status: "rejected", email: friends[count+1].email})
+    } 
 
     await tempEvent.save();
 
@@ -58,15 +63,19 @@ db.once("open", async () => {
       { $push: { groups: tempGroup._id } }
     )
     //add the same friend you added to the group to the invitation group
-    await InvitationGroup.create({invitee: newFriend._id, group: tempGroup._id, status: "accepted", email: newFriend.email})
-    // if (count+1 < friends.length) {
-    //   await InvitationGroup.create({invitee: friends[count+1]._id, group: tempGroup._id, status: "pending", email: friends[count+1].email})
-    //   console.log("newestInvitationGroup", await InvitationGroup.find().sort({$natural:1}).limit(1))
-    // }
+    if (count + 1 > friends.length) {
+      await InvitationGroup.create({invitee: newFriend._id, inviter: friends[0]._id, group: tempGroup._id, status: "accepted", email: newFriend.email})
+    } else { //inviter: friends[count+1]._id,
+      await InvitationGroup.create({invitee: newFriend._id, group: tempGroup._id, status: "accepted", email: newFriend.email})
+    }
+    if (count+1 < friends.length) {
+      await InvitationGroup.create({invitee: friends[count+1]._id, inviter: newFriend._id, group: tempGroup._id, status: "pending", email: friends[count+1].email})
+      await InvitationGroup.create({invitee: friends[count+1]._id, inviter: newFriend._id, group: tempGroup._id, status: "rejected", email: friends[count+1].email})
+    }
 
     await tempGroup.save();
 
-    // count += 1
+    count += 1
   }
 
   console.log("all done!");
