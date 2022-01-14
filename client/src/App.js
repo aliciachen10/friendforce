@@ -7,7 +7,13 @@ import Navbar from './components/Navbars/Navbar';
 import GroupList from './components/groupsTab/groupList';
 import Footer from './components/Footer';
 
+/* App.js
+    Parent component of app body and navbar (everything).
+    Has a unique state for each "tab" in the application.
+*/
 function App() {
+  //The appearance of the app's body and navbar depend on this state.
+  //setTab is passed to the navbar so that the navbar can change this state.
   const [currentTab, setTab] = useState("Dashboard");
 
   return (

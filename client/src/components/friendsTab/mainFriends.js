@@ -1,13 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import FriendsList from "./friendsList";
 import FriendsPage from "./friendsPage";
 
-
+/* MainFriends
+    Parent of the two possible friend views--the default
+    list of all friends (FriendList) and a profile view of 
+    a specific friend (FriendPage)
+*/
 function MainFriends () {
 
-    //For some reason, friendState is initialized as 'undefined'. We had to make this if/else to account for this.
+    //Display is either the friendlist or a friendpage based on this state.
     const [friendState, setFriendState] = useState("friendlist");
 
+    //Conditionally render child component based on state
     function displayFriendPage(friendOption) {
         if(friendOption === "friendpage"){
             return <FriendsPage mainFriendSetter = {setFriendState} />
@@ -19,12 +24,9 @@ function MainFriends () {
 
     return (
         <div>
-            {/* executed before friendState is assigned */}
             {displayFriendPage(friendState)} 
         </div>
     )
-
-
 }
 
 export default MainFriends
