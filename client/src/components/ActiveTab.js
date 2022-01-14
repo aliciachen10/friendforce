@@ -17,12 +17,11 @@ function ActiveTab(props) {
         }
     }
 
-
     return (  
         <div className = "p-6">
             {chooseTab(props.currTab)}
         </div>
-    ) 
+    );
 
     
 }

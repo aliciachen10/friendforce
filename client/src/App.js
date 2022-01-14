@@ -7,8 +7,6 @@ import Navbar from './components/Navbars/Navbar';
 import GroupList from './components/groupsTab/groupList';
 import Footer from './components/Footer';
 
-
-
 function App() {
   const [currentTab, setTab] = useState("Dashboard");
 
