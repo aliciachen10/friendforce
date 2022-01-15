@@ -3,6 +3,10 @@ import React, {useState} from 'react';
 import ffLogo from '../../img/ff.png';
 import ffText from '../../img/ff_text.png';
 
+/* Navbar.js
+   The navigation bar at the top of the app. Can set the App state so that the component
+   in the body of the app changes.
+*/
 function Navbar(props) {
   const [navOpen, setNav] = useState(false);
 
@@ -23,7 +27,6 @@ function Navbar(props) {
     props.tabStateSetter("Events")
   }
   
-
   return (
     <nav className="bg-gray-800">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -114,7 +117,7 @@ function Navbar(props) {
         </div>
       </div>
     </nav>
-    )
+  )
 }
 
 export default Navbar;
