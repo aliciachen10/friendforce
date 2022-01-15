@@ -1,30 +1,5 @@
 const { gql } = require('apollo-server-express');
 
-//profile(profileId: ID!) -- that means to get a single profile, enter the profileID, which is required to obtain that profile
-// type Profile {
-//   _id: ID
-//   name: String
-//   skills: [String]!
-// }
-
-// type Query {
-//   profiles: [Profile]!
-//   profile(profileId: ID!): Profile
-// }
-
-// type Mutation {
-//   addProfile(name: String!): Profile
-//   addSkill(profileId: ID!, skill: String!): Profile
-//   removeProfile(profileId: ID!): Profile
-//   removeSkill(profileId: ID!, skill: String!): Profile
-// }
-//event:     date_created: Date
-    // date: Date
-
-    //friend:     date_created: Date
-    //group:     date_created: Date 
-    //invitationEvent:     date_created: Date 
-    //invitationGroup:     date_created: Date 
 const typeDefs = gql`
   scalar Date 
  
@@ -34,7 +9,7 @@ const typeDefs = gql`
 
     location: String
     description: String 
-    invitees: [String]
+    friends: [Friend]
     creator: String
   }
 
@@ -46,8 +21,8 @@ const typeDefs = gql`
     email: String
     phone: String 
     interests: [String]
-    groups: [String]
-    events: [String] 
+    groups: [Group]!
+    events: [Event] 
     invitations_received: [String] 
     invitations_sent: [String]
   }
@@ -57,7 +32,7 @@ const typeDefs = gql`
     name: String
     date_created: Date 
     description: String 
-    friends: [String] 
+    friends: [Friend]! 
     interests: [String] 
   }
 

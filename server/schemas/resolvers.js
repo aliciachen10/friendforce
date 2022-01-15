@@ -1,59 +1,16 @@
 const {Event, Friend, Group, InvitationEvent, InvitationGroup } = require('../models');
 const  {GraphQLDateTime} = require("graphql-iso-date");
 
-const resolversRemove = {
-  Query: {
-    profiles: async () => {
-      return Profile.find();
-    },
-
-    profile: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId });
-    },
-  },
-
-  Mutation: {
-    addProfile: async (parent, { name }) => {
-      return Profile.create({ name });
-    },
-    addSkill: async (parent, { profileId, skill }) => {
-      return Profile.findOneAndUpdate(
-        { _id: profileId },
-        {
-          $addToSet: { skills: skill },
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
-    },
-    removeProfile: async (parent, { profileId }) => {
-      return Profile.findOneAndDelete({ _id: profileId });
-    },
-    removeSkill: async (parent, { profileId, skill }) => {
-      return Profile.findOneAndUpdate(
-        { _id: profileId },
-        { $pull: { skills: skill } },
-        { new: true }
-      );
-    },
-  },
-};
-
 const resolvers = {
-  // customScalarResolver: {
-  //   Date: GraphQLDateTime
-  // },
   Query: {
     events: async () => {
-      return Event.find();
+      return Event.find().populate('friends');
     },
     friends: async () => {
-      return Friend.find();
+      return Friend.find().populate('groups').populate('events');
     },
     groups: async () => {
-      return Group.find();
+      return Group.find().populate('friends');
     },
     invitationEvents: async () => {
       return InvitationEvent.find();
@@ -62,7 +19,7 @@ const resolvers = {
       return InvitationGroup.find();
     },
     event: async (parent, { eventId }) => {
-      return Event.findOne({ _id: eventId });
+      return Event.findOne({ _id: eventId }).populate('friends');
     },
   },
 

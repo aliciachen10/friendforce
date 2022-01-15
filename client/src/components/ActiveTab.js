@@ -4,6 +4,8 @@ import GroupList from './groupsTab/groupList'
 import EventsList from './eventsTab/eventsList';
 import MainFriends from './friendsTab/mainFriends';
 import Dashboard from './dashboardTab/Dashboard'
+import MainEvents from './eventsTab/mainEvents';
+import MainGroups from './groupsTab/mainGroups';
 
 /*  ActiveTab.js
     The 'body' of the app below the navbar. The body 
@@ -16,13 +18,13 @@ function ActiveTab(props) {
             return <MainFriends/>;
         }
         else if (tabName === "Groups") {
-            return <GroupList/>;
-        }
-        else if (tabName === "Events" ) {
-            return <EventsList/>;
+            return <MainGroups/>
         }
         else if (tabName === "Dashboard" ) {
-            return <Dashboard/>;
+            return <Dashboard/>;            
+        }
+        else if (tabName === "Events" ) {
+            return <MainEvents/>
         }
     }
 

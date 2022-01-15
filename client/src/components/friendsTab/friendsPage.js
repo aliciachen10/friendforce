@@ -1,5 +1,5 @@
 //import { PaperClipIcon } from '@heroicons/react/solid'
-import FriendsCard from './friendCard'
+import { CalendarIcon, LocationMarkerIcon, UsersIcon } from '@heroicons/react/solid'
 
 
 
@@ -210,39 +210,274 @@ function FriendsPage () {
       },
     ],
   }
+
+  const people = [
+    {
+      name: 'Groupo-de-seis',
+      
+    },
+    {
+      name: 'Nerf Herders',
+      
+    },
+    {
+      name: 'Chess Club',
+     
+    },
+  ]
+
+  const positions = [
+    {
+      id: 1,
+      title: 'Rufus-du-sol',
+      type: 'upcoming',
+      location: 'CocoBooth Theater',
+      department: 'music',
+      closeDate: '2020-01-07',
+      closeDateFull: 'January 7, 2020',
+    },
+    {
+      id: 1,
+      title: 'Rufus-du-sol',
+      type: 'upcoming',
+      location: 'CocoBooth Theater',
+      department: 'music',
+      closeDate: '2020-01-07',
+      closeDateFull: 'January 7, 2020',
+    },
+    {
+      id: 1,
+      title: 'Rufus-du-sol',
+      type: 'upcoming',
+      location: 'CocoBooth Theater',
+      department: 'music',
+      closeDate: '2020-01-07',
+      closeDateFull: 'January 7, 2020',
+    },
+  ]
   
   return (
-    <div> 
-      <nav className="h-full overflow-y-auto" aria-label="Directory">
-        {Object.keys(directory).map((letter) => (
-          <div key={letter} className="relative">
-            <div className="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-              <h3>{letter}</h3>
-            </div>
-            <ul role="list" className="relative z-0 divide-y divide-gray-200">
-              {directory[letter].map((person) => (
-                <li key={person.id} className="bg-white">
-                  <div className="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-                    <div className="flex-shrink-0">
-                      <img className="h-10 w-10 rounded-full" src={person.imageUrl} alt="" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <a href="#" className="focus:outline-none">
-                        {/* Extend touch target to entire panel */}
-                        <span className="absolute inset-0" aria-hidden="true" />
-                        <p className="text-sm font-medium text-gray-900">{person.name}</p>
-                        <p className="text-sm text-gray-500 truncate">{person.role}</p>
-                      </a>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
+    <div>
+
+    <div className="grid grid-cols-5 gap-10"> 
+    <div className="col-span-1"> 
+    <nav className="h-full overflow-y-auto" aria-label="Directory">
+      {Object.keys(directory).map((letter) => (
+        <div key={letter} className="relative">
+          <div className="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
+            <h3>{letter}</h3>
           </div>
+          <ul role="list" className="relative z-0 divide-y divide-gray-200">
+            {directory[letter].map((person) => (
+              <li key={person.id} className="bg-white">
+                <div className="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
+                  <div className="flex-shrink-0">
+                    <img className="h-10 w-10 rounded-full" src={person.imageUrl} alt="" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <a href="#" className="focus:outline-none">
+                      {/* Extend touch target to entire panel */}
+                      <span className="absolute inset-0" aria-hidden="true" />
+                      <p className="text-sm font-medium text-gray-900">{person.name}</p>
+                      <p className="text-sm text-gray-500 truncate">{person.role}</p>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </nav>
+    </div>
+
+
+   <div className="col-span-4"> 
+
+            
+    <> 
+     <div className="grid grid-cols-2 gap-10">
+   
+   <div> 
+      <div>
+        <h3 className="text-lg leading-6 font-medium text-gray-900">Andrew Bumgarner</h3>
+      </div>
+      <div className="mt-5 border-t border-gray-200">
+        <dl className="divide-y divide-gray-200">
+          <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+            <dt className="text-sm font-medium text-gray-500">Full name</dt>
+            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              <span className="flex-grow">Andrew Bumgarner</span>
+              <span className="ml-4 flex-shrink-0">
+                <button
+                  type="button"
+                  className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Update
+                </button>
+              </span>
+            </dd>
+          </div>
+          <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
+            <dt className="text-sm font-medium text-gray-500">Application for</dt>
+            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              <span className="flex-grow">Backend Developer</span>
+              <span className="ml-4 flex-shrink-0">
+                <button
+                  type="button"
+                  className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Update
+                </button>
+              </span>
+            </dd>
+          </div>
+          <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
+            <dt className="text-sm font-medium text-gray-500">Email address</dt>
+            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              <span className="flex-grow">margotfoster@example.com</span>
+              <span className="ml-4 flex-shrink-0">
+                <button
+                  type="button"
+                  className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Update
+                </button>
+              </span>
+            </dd>
+          </div>
+          <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
+            <dt className="text-sm font-medium text-gray-500">Phone Number</dt>
+            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              <span className="flex-grow">573-443-5533</span>
+              <span className="ml-4 flex-shrink-0">
+                <button
+                  type="button"
+                  className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Update
+                </button>
+              </span>
+            </dd>
+          </div>
+          <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
+            <dt className="text-sm font-medium text-gray-500">Address</dt>
+            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              <span className="flex-grow">
+               11380 Goshen Ave, Los Angeles California
+              </span>
+              <span className="ml-4 flex-shrink-0">
+                <button
+                  type="button"
+                  className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Update
+                </button>
+              </span>
+            </dd>
+          </div>
+         
+        </dl>
+      </div>
+      </div> 
+      {/* end of first details container*/}
+      <div> 
+      <div>
+        <h3 className="text-lg leading-6 font-medium text-gray-900">About Me</h3>
+      </div>
+      <div className="mt-5 border-t border-gray-200">
+        <dl className="divide-y divide-gray-200">
+          
+          <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
+            <dt className="text-sm font-medium text-gray-500">About</dt>
+            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              <span className="flex-grow">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </span>
+              <span className="ml-4 flex-shrink-0">
+                <button
+                  type="button"
+                  className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Update
+                </button>
+              </span>
+            </dd>
+          </div>
+         
+        </dl>
+      </div>
+      </div> 
+ 
+
+  <div> 
+      <div>
+        <h3 className="text-lg leading-6 font-medium text-gray-900">Groups</h3>
+       
+      </div>
+      <ul role="list" className="divide-y divide-gray-200">
+      {people.map((person) => (
+        <li key={person.email} className="py-4 flex">
+          <div className="ml-3">
+            <p className="text-sm font-medium text-gray-900">{person.name}</p>
+            <p className="text-sm text-gray-500">{person.email}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+      </div> 
+
+      {/* End of third details container */}
+
+      <div> 
+      <div>
+        <h3 className="text-lg leading-6 font-medium text-gray-900">Events</h3>
+      </div>
+      <div className="bg-white shadow overflow-hidden sm:rounded-md">
+      <ul role="list" className="divide-y divide-gray-200">
+        {positions.map((position) => (
+          <li key={position.id}>
+            <a href="#" className="block hover:bg-gray-50">
+              <div className="px-4 py-4 sm:px-6">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-medium text-indigo-600 truncate">{position.title}</p>
+                  <div className="ml-2 flex-shrink-0 flex">
+                    <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      {position.type}
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-2 sm:flex sm:justify-between">
+                  <div className="sm:flex">
+                    <p className="flex items-center text-sm text-gray-500">
+                      <UsersIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
+                      {position.department}
+                    </p>
+                    <p className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
+                      <LocationMarkerIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
+                      {position.location}
+                    </p>
+                  </div>
+                  <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                    <CalendarIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <p>
+                      Event on <time dateTime={position.closeDate}>{position.closeDateFull}</time>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
         ))}
-      </nav>
-    
-      {/* <FriendsCard/> */}
+      </ul>
+    </div>
+      </div> 
+      {/* end of 4th details container */}
+
+      </div>
+    </>
+    </div>
+    </div>
     </div>
   )
 }
