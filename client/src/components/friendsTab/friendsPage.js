@@ -1,7 +1,7 @@
 //import { PaperClipIcon } from '@heroicons/react/solid'
 import { CalendarIcon, LocationMarkerIcon, UsersIcon } from '@heroicons/react/solid'
-
-
+import {useState} from "react"
+import friendName from './friendName'
 
 
 function FriendsPage () {
@@ -255,6 +255,21 @@ function FriendsPage () {
       closeDateFull: 'January 7, 2020',
     },
   ]
+
+  // name field
+  const [nameField, setNameField] = useState(<span className="flex-grow"> Andrew Bumgarner</span>)
+  const changeNameField = () => {
+    setNameField(friendName)
+  }
+  //email adddress 
+  const [emailField, setEmailField] = useState(<span className="flex-grow">example@example.com</span>)
+  const changeEmailField = () => {
+    setEmailField(<textarea></textarea>)
+  }
+//phone number
+const [phoneField, setPhoneField] = useState(<span></span>)
+
+
   
   return (
     <div>
@@ -307,10 +322,12 @@ function FriendsPage () {
           <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
             <dt className="text-sm font-medium text-gray-500">Full name</dt>
             <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <span className="flex-grow">Andrew Bumgarner</span>
+    
+              {nameField}
               <span className="ml-4 flex-shrink-0">
                 <button
                   type="button"
+                  onClick={changeNameField}
                   className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Update
@@ -335,10 +352,11 @@ function FriendsPage () {
           <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
             <dt className="text-sm font-medium text-gray-500">Email address</dt>
             <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <span className="flex-grow">margotfoster@example.com</span>
+             {emailField}
               <span className="ml-4 flex-shrink-0">
                 <button
                   type="button"
+                  onClick={changeEmailField}
                   className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Update
