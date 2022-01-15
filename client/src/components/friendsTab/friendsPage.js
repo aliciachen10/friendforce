@@ -1,6 +1,7 @@
 //import { PaperClipIcon } from '@heroicons/react/solid'
-import { CalendarIcon, LocationMarkerIcon, UsersIcon } from '@heroicons/react/solid'
-
+import { CalendarIcon, LocationMarkerIcon, UsersIcon } from '@heroicons/react/solid';
+import FriendsData from "./friends-Data"
+import AboutMe from "./friends-AboutMe"
 
 
 
@@ -298,117 +299,10 @@ function FriendsPage () {
     <> 
      <div className="grid grid-cols-2 gap-10">
    
-   <div> 
-      <div>
-        <h3 className="text-lg leading-6 font-medium text-gray-900">Andrew Bumgarner</h3>
-      </div>
-      <div className="mt-5 border-t border-gray-200">
-        <dl className="divide-y divide-gray-200">
-          <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-            <dt className="text-sm font-medium text-gray-500">Full name</dt>
-            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <span className="flex-grow">Andrew Bumgarner</span>
-              <span className="ml-4 flex-shrink-0">
-                <button
-                  type="button"
-                  className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Update
-                </button>
-              </span>
-            </dd>
-          </div>
-          <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
-            <dt className="text-sm font-medium text-gray-500">Application for</dt>
-            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <span className="flex-grow">Backend Developer</span>
-              <span className="ml-4 flex-shrink-0">
-                <button
-                  type="button"
-                  className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Update
-                </button>
-              </span>
-            </dd>
-          </div>
-          <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
-            <dt className="text-sm font-medium text-gray-500">Email address</dt>
-            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <span className="flex-grow">margotfoster@example.com</span>
-              <span className="ml-4 flex-shrink-0">
-                <button
-                  type="button"
-                  className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Update
-                </button>
-              </span>
-            </dd>
-          </div>
-          <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
-            <dt className="text-sm font-medium text-gray-500">Phone Number</dt>
-            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <span className="flex-grow">573-443-5533</span>
-              <span className="ml-4 flex-shrink-0">
-                <button
-                  type="button"
-                  className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Update
-                </button>
-              </span>
-            </dd>
-          </div>
-          <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
-            <dt className="text-sm font-medium text-gray-500">Address</dt>
-            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <span className="flex-grow">
-               11380 Goshen Ave, Los Angeles California
-              </span>
-              <span className="ml-4 flex-shrink-0">
-                <button
-                  type="button"
-                  className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Update
-                </button>
-              </span>
-            </dd>
-          </div>
-         
-        </dl>
-      </div>
-      </div> 
+   <FriendsData/>
       {/* end of first details container*/}
-      <div> 
-      <div>
-        <h3 className="text-lg leading-6 font-medium text-gray-900">About Me</h3>
-      </div>
-      <div className="mt-5 border-t border-gray-200">
-        <dl className="divide-y divide-gray-200">
-          
-          <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
-            <dt className="text-sm font-medium text-gray-500">About</dt>
-            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <span className="flex-grow">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </span>
-              <span className="ml-4 flex-shrink-0">
-                <button
-                  type="button"
-                  className="bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Update
-                </button>
-              </span>
-            </dd>
-          </div>
-         
-        </dl>
-      </div>
-      </div> 
- 
+     
+    <AboutMe/>
 
   <div> 
       <div>
