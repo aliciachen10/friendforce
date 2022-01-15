@@ -25,10 +25,10 @@ function DashboardProfile() {
             {/* All other info */}
             <div className = "grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4">
                 {/* TODO: make these 4 fields subcomponents. */}
-                <SubmitField name = "Phone" stateSetter = {setPhone}/>
-                <SubmitField name = "Email" stateSetter = {setEmail}/>
-                <SubmitField name = "Address" stateSetter = {setAddress}/>
-                <SubmitField name = "Favorite Hobby" stateSetter = {setHobby}/>
+                <SubmitField name = "Phone" stateSetter = {setPhone} savedVal = {savedPhone}/>
+                <SubmitField name = "Email" stateSetter = {setEmail} savedVal = {savedEmail}/>
+                <SubmitField name = "Address" stateSetter = {setAddress} savedVal = {savedAddress}/>
+                <SubmitField name = "Hobby" stateSetter = {setHobby} savedVal = {savedHobby}/>
             </div>
         </section>
 
