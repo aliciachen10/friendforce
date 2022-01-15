@@ -1,5 +1,8 @@
 const {Event, Friend, Group, InvitationEvent, InvitationGroup } = require('../models');
 const  {GraphQLDateTime} = require("graphql-iso-date");
+const { AuthenticationError } = require('apollo-server-express');
+const { Profile } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -20,6 +23,12 @@ const resolvers = {
     },
     event: async (parent, { eventId }) => {
       return Event.findOne({ _id: eventId }).populate('friends');
+    },
+    profiles: async () => {
+      return Profile.find();
+    },
+    profile: async (parent, { profileId }) => {
+      return Profile.findOne({ _id: profileId });
     },
   },
 
@@ -44,6 +53,23 @@ const resolvers = {
     },
     removeGroup: async (parent, { groupId }) => {
       return Group.findOneAndDelete({ _id: groupId });
+    },
+    addProfile: async (parent, { name, email, password }) => {
+      const profile = await Profile.create({ name, email, password });
+      const token = signToken(profile);
+      return { token, profile };
+    },
+    login: async (parent, { email, password }) => {
+      const profile = await Profile.findOne({ email });
+      if (!profile) {
+        throw new AuthenticationError('No profile with this email found!');
+      }
+      const correctPw = await profile.isCorrectPassword(password);
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect password!');
+      }
+      const token = signToken(profile);
+      return { token, profile };
     },
   },
 };
