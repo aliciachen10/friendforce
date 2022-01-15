@@ -3,7 +3,8 @@ import React, {useState} from 'react';
 import GroupList from './groupsTab/groupList'
 import EventsList from './eventsTab/eventsList';
 import MainFriends from './friendsTab/mainFriends';
-
+import MainEvents from './eventsTab/mainEvents';
+import MainGroups from './groupsTab/mainGroups';
 /*  ActiveTab.js
     The 'body' of the app below the navbar. The body 
     (aka active tab) is either the dashboard, the friends 
@@ -15,10 +16,10 @@ function ActiveTab(props) {
             return <MainFriends/>
         }
         else if (tabName === "Groups") {
-            return <GroupList/>
+            return <MainGroups/>
         }
         else if (tabName === "Events" ) {
-            return <EventsList/>
+            return <MainEvents/>
         }
     }
 
