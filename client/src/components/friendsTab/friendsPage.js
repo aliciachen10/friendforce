@@ -1,12 +1,13 @@
 //import { PaperClipIcon } from '@heroicons/react/solid'
-import { CalendarIcon, LocationMarkerIcon, UsersIcon } from '@heroicons/react/solid';
 import FriendsData from "./friends-Data"
 import AboutMe from "./friends-AboutMe"
-
-
+import FriendSidebar from './friendsList-sidebar';
+import FriendGroups from './friends-Groups';
+import FriendEvents from './friends-Events';
 
 function FriendsPage () {
 
+  //These probably need to be states so that they dynamically update
   const directory = {
     A: [
       {
@@ -212,22 +213,23 @@ function FriendsPage () {
     ],
   }
 
-  const people = [
+  const groups = [
     {
       name: 'Groupo-de-seis',
-      
+      email: "placeholder"
     },
     {
       name: 'Nerf Herders',
-      
+      email: "another placeholder"
     },
     {
       name: 'Chess Club',
+      email: "Yet another ph"
      
     },
   ]
 
-  const positions = [
+  const events = [
     {
       id: 1,
       title: 'Rufus-du-sol',
@@ -238,7 +240,7 @@ function FriendsPage () {
       closeDateFull: 'January 7, 2020',
     },
     {
-      id: 1,
+      id: 2,
       title: 'Rufus-du-sol',
       type: 'upcoming',
       location: 'CocoBooth Theater',
@@ -247,7 +249,7 @@ function FriendsPage () {
       closeDateFull: 'January 7, 2020',
     },
     {
-      id: 1,
+      id: 3,
       title: 'Rufus-du-sol',
       type: 'upcoming',
       location: 'CocoBooth Theater',
@@ -258,120 +260,27 @@ function FriendsPage () {
   ]
   
   return (
-    <div>
+    <div className = "flex flex-col">
+      <div className="grid grid-cols-5 gap-10">
+      
+        {/* Sidebar Directory */}
+        <FriendSidebar directory = {directory}/>
 
-    <div className="grid grid-cols-5 gap-10"> 
-    <div className="col-span-1"> 
-    <nav className="h-full overflow-y-auto" aria-label="Directory">
-      {Object.keys(directory).map((letter) => (
-        <div key={letter} className="relative">
-          <div className="z-10 sticky top-0 border-t border-b border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">
-            <h3>{letter}</h3>
-          </div>
-          <ul role="list" className="relative z-0 divide-y divide-gray-200">
-            {directory[letter].map((person) => (
-              <li key={person.id} className="bg-white">
-                <div className="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-                  <div className="flex-shrink-0">
-                    <img className="h-10 w-10 rounded-full" src={person.imageUrl} alt="" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <a href="#" className="focus:outline-none">
-                      {/* Extend touch target to entire panel */}
-                      <span className="absolute inset-0" aria-hidden="true" />
-                      <p className="text-sm font-medium text-gray-900">{person.name}</p>
-                      <p className="text-sm text-gray-500 truncate">{person.role}</p>
-                    </a>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </nav>
-    </div>
+        {/* Everything besides the scrolling sidebar */}
+        <div className="col-span-4 bg-green-400 p-4 mb-4 rounded-lg shadow-sm">  
+          <div className="grid grid-cols-2 gap-10">
 
-
-   <div className="col-span-4"> 
-
+            <FriendsData/>
+            <AboutMe/>
             
-    <> 
-     <div className="grid grid-cols-2 gap-10">
-   
-   <FriendsData/>
-      {/* end of first details container*/}
-     
-    <AboutMe/>
+            {/* Groups section */}
+            <FriendGroups groups = {groups}/>
 
-  <div> 
-      <div>
-        <h3 className="text-lg leading-6 font-medium text-gray-900">Groups</h3>
-       
-      </div>
-      <ul role="list" className="divide-y divide-gray-200">
-      {people.map((person) => (
-        <li key={person.email} className="py-4 flex">
-          <div className="ml-3">
-            <p className="text-sm font-medium text-gray-900">{person.name}</p>
-            <p className="text-sm text-gray-500">{person.email}</p>
+            {/* Events section */}
+            <FriendEvents events = {events}/>
           </div>
-        </li>
-      ))}
-    </ul>
-      </div> 
-
-      {/* End of third details container */}
-
-      <div> 
-      <div>
-        <h3 className="text-lg leading-6 font-medium text-gray-900">Events</h3>
+        </div>
       </div>
-      <div className="bg-white shadow overflow-hidden sm:rounded-md">
-      <ul role="list" className="divide-y divide-gray-200">
-        {positions.map((position) => (
-          <li key={position.id}>
-            <a href="#" className="block hover:bg-gray-50">
-              <div className="px-4 py-4 sm:px-6">
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium text-indigo-600 truncate">{position.title}</p>
-                  <div className="ml-2 flex-shrink-0 flex">
-                    <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                      {position.type}
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-2 sm:flex sm:justify-between">
-                  <div className="sm:flex">
-                    <p className="flex items-center text-sm text-gray-500">
-                      <UsersIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
-                      {position.department}
-                    </p>
-                    <p className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
-                      <LocationMarkerIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
-                      {position.location}
-                    </p>
-                  </div>
-                  <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                    <CalendarIcon className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
-                    <p>
-                      Event on <time dateTime={position.closeDate}>{position.closeDateFull}</time>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-      </div> 
-      {/* end of 4th details container */}
-
-      </div>
-    </>
-    </div>
-    </div>
     </div>
   )
 }
