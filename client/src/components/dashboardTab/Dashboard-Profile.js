@@ -1,8 +1,17 @@
-
+import { useQuery } from '@apollo/client';
+import { QUERY_PROFILES } from '../utils/queries';
 import React, {useState} from 'react';
 import SubmitField from './Dashboard-SubmitField';
 
 function DashboardProfile() {
+    const { loading, data } = useQuery(QUERY_PROFILES);
+    const profiles = data?.profiles || []; //need to change this to the data that i actually need 
+  // sample code for how i would pipe 'profiles' in below 
+  //   <ProfileList
+  //   profiles={profiles}
+  //   title="Here's the current roster of friends..."
+  // />
+    
     const [canEdit, setEdit] = useState(false);
 
     const [savedPhone, setPhone]       = useState("#"); 

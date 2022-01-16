@@ -36,6 +36,7 @@ const invitationGroupSchema = new Schema({
   status: {
     type: String,
     enum: ['pending', 'accepted', 'rejected'],
+    default: 'pending',
     trim: true,
     required: true
   },
