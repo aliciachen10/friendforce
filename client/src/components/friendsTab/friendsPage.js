@@ -260,25 +260,31 @@ function FriendsPage () {
   ]
   
   return (
-    <div className = "flex flex-col">
-      <div className="grid grid-cols-5 gap-10">
+    <div>
+      <div className="flex flex-row">
       
         {/* Sidebar Directory */}
         <FriendSidebar directory = {directory}/>
 
         {/* Everything besides the scrolling sidebar */}
-        <div className="col-span-4 bg-green-400 p-4 mb-4 rounded-lg shadow-sm">  
-          <div className="grid grid-cols-2 gap-10">
+        <div className="flex flex-col mx-auto bg-white p-4 rounded-lg">
+            {/* Profile Pic and Name*/}
+            <div className = "flex-col pb-2 self-center">
+                <img className = "rounded-full max-h-32 pb-2 m-auto" src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"></img>
+                <div className = "text-lg text-center">Friend Name Here</div>
+            </div>
 
-            <FriendsData/>
-            <AboutMe/>
-            
-            {/* Groups section */}
-            <FriendGroups groups = {groups}/>
+            <div className="grid grid-cols-1 lg:grid-cols-2 space-x-4 space-y-4 p-4">
 
-            {/* Events section */}
-            <FriendEvents events = {events}/>
-          </div>
+              <FriendsData/>
+              <AboutMe/>
+              
+              {/* Groups section */}
+              <FriendGroups groups = {groups}/>
+
+              {/* Events section */}
+              <FriendEvents events = {events}/>
+            </div>
         </div>
       </div>
     </div>

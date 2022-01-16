@@ -2,32 +2,16 @@ import SubmitField from "./friends-SubmitField"
 
 
 function AboutMe() {
-
-
-
-
-    return (
-
-<div> 
-      <div>
-        <h3 className="text-lg leading-6 font-medium text-gray-900">About Me</h3>
+  return (
+    <div className = ""> 
+      <div className = "text-lg leading-6 font-medium text-gray-900 mb-2 text-center border-b-4 border-dotted border-gray-200">
+        <h3 className="-mt-4 text-lg leading-6 font-medium text-gray-900">About Me</h3>
       </div>
-      <div className="mt-5 border-t border-gray-200">
-        <dl className="divide-y divide-gray-200">
-          
-          <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
-            <dt className="text-sm font-medium text-gray-500">About</dt>
-            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <SubmitField/>
-              
-            </dd>
-          </div>
-         
-        </dl>
+      <div className="rounded-lg border-2 border-gray-200 mt-4 p-4 indent-4">
+      Pellentesque volutpat ac tortor vel dapibus. Mauris volutpat felis sed metus ultrices posuere. In semper et felis in faucibus. Nullam quis nisl suscipit, pretium turpis lacinia, feugiat sapien. Morbi lobortis ante felis, vel finibus lectus fringilla a. Nunc blandit augue auctor lorem malesuada pharetra ac at felis. Morbi quis velit at massa gravida scelerisque. Etiam luctus pellentesque mauris sed congue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in posuere nisi. Donec in velit ligula.
       </div>
-      </div> 
-
-    )
+    </div> 
+  )
 }
 
 
