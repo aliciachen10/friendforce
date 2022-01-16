@@ -261,13 +261,13 @@ function FriendsPage () {
   
   return (
     <div>
-      <div className="flex flex-row">
+      <div className="flex flex-row space-x-4 m-4">
       
         {/* Sidebar Directory */}
         <FriendSidebar directory = {directory}/>
 
         {/* Everything besides the scrolling sidebar */}
-        <div className="flex flex-col mx-auto bg-white p-4 rounded-lg">
+        <div className="flex flex-col mx-auto bg-white p-4 m-4 space-x-4 rounded-lg ">
             {/* Profile Pic and Name*/}
             <div className = "flex-col pb-2 self-center">
                 <img className = "rounded-full max-h-32 pb-2 m-auto" src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"></img>

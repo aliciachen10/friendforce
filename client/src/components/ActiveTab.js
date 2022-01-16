@@ -29,7 +29,7 @@ function ActiveTab(props) {
     }
 
     return (  
-        <div className = "p-6 bg-gray-100 h-screen">
+        <div className = "p-6 bg-gray-100">
             {chooseTab(props.currTab)}
         </div>
     );
