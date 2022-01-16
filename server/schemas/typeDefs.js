@@ -81,11 +81,11 @@ const typeDefs = gql`
   type Mutation {
     addProfile(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addEvent(name: String!): Event
+    addEvent(name: String!, date: String, location: String, description: String, friends: [ID], creator: String): Event 
     addFriend(name: String!, address: String, email: String!, phone: String, about_me: String, interests: [String], password: String): Friend
-    addGroup(name: String!, description: String, friends: [Friend], interests: [String]): Group
-    addInvitationGroup(invitee: Friend, inviter: Friend, email: String!, status: [String], group: Group): InvitationGroup 
-    addInvitationEvent(invitee: Friend, inviter: Friend, email: String!, status: String, event: Event): InvitationEvent
+    addGroup(name: String!, description: String, friends: [ID], interests: [String]): Group
+    addInvitationGroup(invitee: ID, inviter: ID, email: String!, status: [String], group: String): InvitationGroup 
+    addInvitationEvent(invitee: ID, inviter: ID, email: String!, status: String, event: String): InvitationEvent
     removeGroup(groupId: ID!): Group
     removeEvent(eventId: ID!): Event
   }
