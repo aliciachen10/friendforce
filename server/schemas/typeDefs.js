@@ -82,10 +82,10 @@ const typeDefs = gql`
     addProfile(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addEvent(name: String!): Event
-    addFriend(name: String!): Friend
-    addGroup(name: String!): Group
-    addInvitationGroup(email: String!): InvitationGroup 
-    addInvitationEvent(email: String!): InvitationEvent
+    addFriend(name: String!, address: String, email: String!, phone: String, about_me: String, interests: [String], password: String): Friend
+    addGroup(name: String!, description: String, friends: [Friend], interests: [String]): Group
+    addInvitationGroup(invitee: Friend, inviter: Friend, email: String!, status: [String], group: Group): InvitationGroup 
+    addInvitationEvent(invitee: Friend, inviter: Friend, email: String!, status: String, event: Event): InvitationEvent
     removeGroup(groupId: ID!): Group
     removeEvent(eventId: ID!): Event
   }

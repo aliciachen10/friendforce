@@ -46,7 +46,7 @@ const resolvers = {
     addInvitationGroup: async (parent, { invitee, inviter, email, status, group }) => { //would this be the best way to create it, with the email? 
       return await InvitationGroup.create({ invitee, inviter, email, status, group });
     },
-    addInvitationEvent: async (parent, { email }) => { //would this be the best way to create it, with the email? 
+    addInvitationEvent: async (parent, { invitee, inviter, email, status, event }) => { //would this be the best way to create it, with the email? 
       return await InvitationGroup.create({ email });
     },
     removeEvent: async (parent, { eventId }) => {
