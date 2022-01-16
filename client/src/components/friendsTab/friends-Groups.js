@@ -4,7 +4,7 @@ function FriendGroups(props) {
     return(
     <div> 
         <div>
-            <h3 className="text-lg leading-6 font-medium text-gray-900 mb-2 text-center border-b-4 border-dotted border-gray-200">Active Groups</h3>
+            <h3 className="text-lg leading-6 font-medium text-gray-900 mb-2 text-center border-b-4 border-dotted border-indigo-300">Active Groups</h3>
         </div>
 
       <ul role="list" className="divide-y divide-gray-200 bg-white  rounded-lg border-2 border-gray-200">

@@ -17,7 +17,7 @@ const [savedInterest, setInterest]       = useState(":)");
     return (
        <div className = "grid"> 
           <div>
-            <h3 className="text-lg leading-6 font-medium text-gray-900 text-center border-b-4 border-dotted border-gray-200">Contact</h3>
+            <h3 className="text-lg leading-6 font-medium text-gray-900 text-center border-b-4 border-dotted border-indigo-300">Contact</h3>
           </div>
           <div className="bg-white shadow overflow-hidden sm:rounded-md border-2 border-gray-200 m-4">
             <dl className="divide-y divide-gray-200">

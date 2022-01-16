@@ -1,13 +1,16 @@
-//import { PaperClipIcon } from '@heroicons/react/solid'
-import FriendsData from "./friends-Data"
-import AboutMe from "./friends-AboutMe"
+import React, {useEffect, useState} from 'react';
+import FriendsData from "./friends-Data";
+import AboutMe from "./friends-AboutMe";
 import FriendSidebar from './friendsList-sidebar';
 import FriendGroups from './friends-Groups';
 import FriendEvents from './friends-Events';
 
 function FriendsPage () {
 
-  //These probably need to be states so that they dynamically update
+  //TODO: Set by user clicking something in the list (frontend)
+  const [selectedFriend, setFriend] = useState("");
+
+  //TODO: Set by initial db call in useEffect (backend/frontend). Directory is a placeholder value.
   const directory = {
     A: [
       {
@@ -212,7 +215,9 @@ function FriendsPage () {
       },
     ],
   }
+  const [directoryState, setDirectory] = useState(directory);
 
+  //TODO: Set by initial db call in useEffect (backend/frontend). Groups is a placeholder value.
   const groups = [
     {
       name: 'Groupo-de-seis',
@@ -228,7 +233,9 @@ function FriendsPage () {
      
     },
   ]
+  const [groupsState, setGroups] = useState(groups)
 
+  //TODO: Set by initial db call in useEffect (backend/frontend). Events is a placeholder value.
   const events = [
     {
       id: 1,
@@ -258,7 +265,8 @@ function FriendsPage () {
       closeDateFull: 'January 7, 2020',
     },
   ]
-  
+  const [eventsState, setEvents] = useState(events)
+
   return (
     <div>
       <div className="flex flex-row space-x-4 m-4">
