@@ -6,19 +6,14 @@ import SubmitField from './Dashboard-SubmitField';
 function DashboardProfile() {
     const { loading, data } = useQuery(QUERY_FRIENDS);
     const friend = data?.friends[0] || []; //need to change this to the data that i actually need 
-  // sample code for how i would pipe 'profiles' in below 
-  //   <ProfileList
-  //   profiles={profiles}
-  //   title="Here's the current roster of friends..."
-  // />
     
     const [canEdit, setEdit] = useState(false);
 
     //these were jared's/andrew's original values 
-    const [savedPhone, setPhone]       = useState("#"); 
-    const [savedEmail, setEmail]       = useState("@");
-    const [savedAddress, setAddress]   = useState("$");
-    const [savedHobby, setHobby]       = useState(":)");
+    const [savedPhone, setPhone]       = useState(friend.phone); 
+    const [savedEmail, setEmail]       = useState(friend.email);
+    const [savedAddress, setAddress]   = useState(friend.address);
+    const [savedHobby, setHobby]       = useState(friend.interests);
 
     // const [savedPhone, setPhone]       = useState(friend.phone); 
     // const [savedEmail, setEmail]       = useState(friend.email);
@@ -34,7 +29,7 @@ function DashboardProfile() {
             {/* Profile Pic and Name*/}
             <div className = "flex-col pb-2 self-center">
                 <img className = "rounded-full max-h-32 pb-2 m-auto" src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"></img>
-                <div className = "text-lg text-center">Your Name Here</div>
+                <div className = "text-lg text-center">{friend.name}</div>
             </div>
 
             {/* All other info */}

@@ -6,6 +6,9 @@ query getFriends {
     _id
     name,
     phone,
+    email,
+    address,
+    interests,
     groups {
       name,
       description
