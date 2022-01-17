@@ -1,14 +1,24 @@
-
+import { useQuery } from '@apollo/client';
+import { QUERY_FRIENDS, QUERY_SINGLE_FRIEND } from '../utils/queries';
 import React, {useState} from 'react';
 import SubmitField from './Dashboard-SubmitField';
 
 function DashboardProfile() {
+    const { loading, data } = useQuery(QUERY_FRIENDS);
+    const friend = data?.friends[0] || []; //need to change this to the data that i actually need 
+    
     const [canEdit, setEdit] = useState(false);
 
-    const [savedPhone, setPhone]       = useState("#"); 
-    const [savedEmail, setEmail]       = useState("@");
-    const [savedAddress, setAddress]   = useState("$");
-    const [savedHobby, setHobby]       = useState(":)");
+    //these were jared's/andrew's original values 
+    const [savedPhone, setPhone]       = useState(friend.phone); 
+    const [savedEmail, setEmail]       = useState(friend.email);
+    const [savedAddress, setAddress]   = useState(friend.address);
+    const [savedHobby, setHobby]       = useState(friend.interests);
+
+    // const [savedPhone, setPhone]       = useState(friend.phone); 
+    // const [savedEmail, setEmail]       = useState(friend.email);
+    // const [savedAddress, setAddress]   = useState(friend.address);
+    // const [savedHobby, setHobby]       = useState(friend.interests[0]); //to do: change this to an array of interests 
 
     return(
         <section className="flex flex-col bg-white w-full rounded-lg p-4 gap-y-4 shadow-sm">
@@ -19,7 +29,7 @@ function DashboardProfile() {
             {/* Profile Pic and Name*/}
             <div className = "flex-col pb-2 self-center">
                 <img className = "rounded-full max-h-32 pb-2 m-auto" src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"></img>
-                <div className = "text-lg text-center">Your Name Here</div>
+                <div className = "text-lg text-center">{friend.name}</div>
             </div>
 
             {/* All other info */}

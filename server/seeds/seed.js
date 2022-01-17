@@ -10,8 +10,8 @@ const {
 const eventData = require("./eventData.json");
 const friendData = require("./friendData.json");
 const groupData = require("./groupData.json");
-const invitationEventData = require('./invitationEventData.json');
-const invitationGroupData = require('./invitationGroupData.json');
+// const invitationEventData = require('./invitationEventData.json');
+// const invitationGroupData = require('./invitationGroupData.json');
 
 db.once("open", async () => {
   // clean database
