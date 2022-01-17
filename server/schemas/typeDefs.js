@@ -72,7 +72,7 @@ const typeDefs = gql`
     event: Event
     events: [Event]
     friends: [Friend]
-    friend: Friend
+    friend(id: ID!): Friend
     groups: [Group]
     invitationEvents: [InvitationEvent]
     invitationGroups: [InvitationGroup]
