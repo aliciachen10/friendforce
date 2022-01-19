@@ -1,8 +1,10 @@
 import { PencilAltIcon } from '@heroicons/react/solid';
 import { SaveAsIcon } from '@heroicons/react/solid';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-function SubmitField(props) {
+
+function SubmitGroupField (props) {
+
     const [canEdit, setEdit] = useState(false);
 
     const editPalette = "";
@@ -44,4 +46,4 @@ function SubmitField(props) {
     )
 }
 
-export default SubmitField;
+export default SubmitGroupField;

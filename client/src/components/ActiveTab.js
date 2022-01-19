@@ -6,6 +6,7 @@ import MainFriends from './friendsTab/mainFriends';
 import Dashboard from './dashboardTab/Dashboard'
 import MainEvents from './eventsTab/mainEvents';
 import MainGroups from './groupsTab/mainGroups';
+import Login from './landingPage/loginPage';
 
 /*  ActiveTab.js
     The 'body' of the app below the navbar. The body 

@@ -1,9 +1,8 @@
 import SubmitField from "./friends-SubmitField"
-
+import {useState} from "react";
 
 function AboutMe(props) {
 
-  
   return (
     <div className = ""> 
       <div className = "text-lg leading-6 font-medium text-gray-900 mb-2 text-center border-b-4 border-dotted border-indigo-300">

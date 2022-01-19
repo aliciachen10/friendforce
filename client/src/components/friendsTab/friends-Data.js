@@ -46,13 +46,8 @@ function FriendsData (props) {
 
           </dl>
         </div>
-        </div> 
-      
+        </div>    
   )
-
-
-
-
 }
 
 export default FriendsData
