@@ -1,5 +1,5 @@
-
 import React, {useState} from 'react';
+import { NavLink } from 'react-router-dom';
 import ffLogo from '../../img/ff.png';
 import ffText from '../../img/ff_text.png';
 
@@ -12,20 +12,6 @@ function Navbar(props) {
 
   const selectedTabClass = "bg-indigo-700 text-white px-3 py-2 top-0  rounded-md text-sm font-medium";
   const unselectedTabClass = "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium";
-
-  /* Tab onclick handlers that change parent tab state */
-  const handleDashboardTabClick = () => {
-    props.tabStateSetter("Dashboard")
-  }
-  const handleFriendsTabClick = () => {
-    props.tabStateSetter("Friends")
-  }
-  const handleGroupsTabClick = () => {
-    props.tabStateSetter("Groups")
-  }
-  const handleEventTabClick = () => {
-    props.tabStateSetter("Events")
-  }
   
   return (
     <nav className="bg-gray-800">
@@ -57,13 +43,10 @@ function Navbar(props) {
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
-                <a href="#" onClick={handleDashboardTabClick} className={props.currTab === "Dashboard" ? selectedTabClass : unselectedTabClass} >Dashboard</a>
-
-                <a href="#" onClick={handleFriendsTabClick} className = {props.currTab === "Friends" ? selectedTabClass : unselectedTabClass}>Friends</a>
-
-                <a href="#" onClick={handleGroupsTabClick} className={props.currTab === "Groups" ? selectedTabClass : unselectedTabClass}>Groups</a>
-
-                <a href="#" onClick={handleEventTabClick} className={props.currTab === "Events" ? selectedTabClass : unselectedTabClass}>Events</a>
+                <NavLink to="/dashboard" className={({isActive})=>(isActive ? selectedTabClass : unselectedTabClass )}>Dashboard</NavLink>
+                <NavLink to="/friends" className={({isActive})=>(isActive ? selectedTabClass : unselectedTabClass )}>Friends</NavLink>
+                <NavLink to="/groups" className={({isActive})=>(isActive ? selectedTabClass : unselectedTabClass )}>Groups</NavLink>
+                <NavLink to="/events" className={({isActive})=>(isActive ? selectedTabClass : unselectedTabClass )}>Events</NavLink>
               </div>
             </div>
           </div>
