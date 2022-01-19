@@ -3,7 +3,7 @@
   "address": "420 Alameda Ave. Los Angeles, CA",
   "email": "Andrewbumnc@gmail.com",
   "phone": "919-111-2222",
-  "about me": "I'm Andrew and I like technical sales",
+  "about_me": "I'm Andrew and I like technical sales",
   "interests": ["bunda", "kites", "los angeles", "ramen", "sales", "startups"]
 },
 {
@@ -11,7 +11,7 @@
   "address": "69 Loblolly Pine Dr. Raleigh, NC",
   "email": "jkohrt@gmail.com",
   "phone": "336-384-3842",
-  "about me": "I'm a compsci grad who's doing a bootcamp and don't play DnD",
+  "about_me": "I'm a compsci grad who's doing a bootcamp and don't play DnD",
   "interests": ["birdwatching", "rollerskating", "powered paragliding", "indoor skydiving"]
 },
 {
@@ -19,7 +19,7 @@
   "address": "3802 Giant Teddy Bear St. Chapel Hill, NC",
   "email": "aliciachen@gmail.com",
   "phone": "702-382-9120",
-  "about me": "I'm some random person who does data science in their free time",
+  "about_me": "I'm some random person who does data science in their free time",
   "interests": ["amusement parks", "fictitious history", "absurdism", "Samuel Beckett"]
 },
 {
@@ -27,7 +27,7 @@
   "address": "109 Avenue of the Pacific Ln. Seattle, WA",
   "email": "jen.libelt@gmail.com",
   "phone": "902-920-9505",
-  "about me": "I just got a job as a developer and I'm good at digital art",
+  "about_me": "I just got a job as a developer and I'm good at digital art",
   "interests": ["photography", "journalism", "digital art", "stamp collecting"]
 }
 ]
