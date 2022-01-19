@@ -44,6 +44,88 @@ export const QUERY_SINGLE_FRIEND = gql`
   }
 `;
 
+export const QUERY_GROUPS = gql`
+query getGroups {
+  groups{
+    _id
+    name
+    date_created
+    description
+    interests
+    friends { 
+      _id
+      name
+    }
+
+  }
+}
+`;
+
+export const QUERY_SINGLE_GROUP = gql `
+query singleGroup($id: ID!) {
+  group(id: $id) {
+    name
+    date_created
+    description
+    interests
+    friends {
+      _id
+      name
+    }
+  }
+}
+`;
+
+
+
+export const QUERY_EVENTS = gql `
+query getEvents {
+  events{
+    _id
+    name
+    date_created
+    date
+    location
+    description
+    friends {
+      _id
+      name
+    }
+    creator {
+      _id
+      name
+    }
+  }
+}
+`;
+
+
+export const QUERY_SINGLE_EVENT = gql `
+query singleEvent ($id: id!) {
+  event(id: $id) {
+    name
+    date_created
+    date
+    location
+    description
+    friends {
+      _id
+      name
+    }
+    creator {
+      _id
+      name
+    }
+  }
+}
+`;
+
+
+
+
+
+
+
 // export const QUERY_ME = gql`
 //   query me {
 //     me {

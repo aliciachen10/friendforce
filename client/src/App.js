@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-<<<<<<< HEAD
 import {
   ApolloClient,
   InMemoryCache,
@@ -7,11 +6,8 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-=======
-import { Routes, Route } from 'react-router-dom';
->>>>>>> main
 import logo from './logo.svg';
 import './App.css';
 import ActiveTab from './components/ActiveTab.js'
@@ -51,15 +47,15 @@ const client = new ApolloClient({
 */
 function App() {
   return (
-<<<<<<< HEAD
     <ApolloProvider client={client}>
-      <div >
-        <Navbar tabStateSetter = {setTab} currTab = {currentTab}/>
+    
+        {/* <Navbar tabStateSetter = {setTab} currTab = {currentTab}/>
         <ActiveTab currTab = {currentTab}/>
-      </div>
-    </ApolloProvider>
-=======
-    <div >
+    */}
+    
+
+
+   
       <Navbar />
       <Routes>
         <Route path="/friends" element={<MainFriends />}/>
@@ -67,8 +63,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}/>
         <Route path="/events" element={<MainEvents />}/>
       </Routes>
-    </div>
->>>>>>> main
+      </ApolloProvider>
+    
   );
 }
 
