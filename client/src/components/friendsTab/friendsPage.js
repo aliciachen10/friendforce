@@ -77,7 +77,7 @@ function FriendsPage (props) {
                 <div className = "text-lg text-center">{user.name}</div>
             </div>
 
-            <div className="grid grid-cols-1 2xl:grid-cols-2 space-x-4 space-y-4 p-4">
+            <div className="grid grid-cols-1 space-x-4 space-y-4 p-4">
 
               <FriendsData user = {user}/>
               <AboutMe user = {user}/>
