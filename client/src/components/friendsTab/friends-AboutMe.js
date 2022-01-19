@@ -1,33 +1,19 @@
 import SubmitField from "./friends-SubmitField"
 
 
-function AboutMe() {
+function AboutMe(props) {
 
-
-
-
-    return (
-
-<div> 
-      <div>
-        <h3 className="text-lg leading-6 font-medium text-gray-900">About Me</h3>
+  
+  return (
+    <div className = ""> 
+      <div className = "text-lg leading-6 font-medium text-gray-900 mb-2 text-center border-b-4 border-dotted border-indigo-300">
+        <h3 className="-mt-4 text-lg leading-6 font-medium text-gray-900">About Me</h3>
       </div>
-      <div className="mt-5 border-t border-gray-200">
-        <dl className="divide-y divide-gray-200">
-          
-          <div className="py-4 sm:grid sm:py-5 sm:grid-cols-3 sm:gap-4">
-            <dt className="text-sm font-medium text-gray-500">About</dt>
-            <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-              <SubmitField/>
-              
-            </dd>
-          </div>
-         
-        </dl>
+      <div className="rounded-lg border-2 border-gray-200 m-4 p-4 indent-4 -ml-1 2xl:ml-4 ">
+        {props.user.about_me}
       </div>
-      </div> 
-
-    )
+    </div> 
+  )
 }
 
 

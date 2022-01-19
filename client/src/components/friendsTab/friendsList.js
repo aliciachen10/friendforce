@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 function FriendsList(props) {
 
-  const handleFriendPageClick = () => {
+  const handleFriendPageClick = (e) => {
     props.mainFriendSetter("friendpage");
   }
 
