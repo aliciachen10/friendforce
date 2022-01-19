@@ -6,6 +6,7 @@ import MainFriends from './friendsTab/mainFriends';
 import Dashboard from './dashboardTab/Dashboard'
 import MainEvents from './eventsTab/mainEvents';
 import MainGroups from './groupsTab/mainGroups';
+import Login from './landingPage/loginPage';
 
 /*  ActiveTab.js
     The 'body' of the app below the navbar. The body 
@@ -29,7 +30,7 @@ function ActiveTab(props) {
     }
 
     return (  
-        <div className = "p-6 bg-gray-100">
+        <div className = "p-6 bg-gray-100 min-h-full">
             {chooseTab(props.currTab)}
         </div>
     );
