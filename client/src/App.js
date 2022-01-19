@@ -1,5 +1,17 @@
 import React, {useState} from 'react';
+<<<<<<< HEAD
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+=======
 import { Routes, Route } from 'react-router-dom';
+>>>>>>> main
 import logo from './logo.svg';
 import './App.css';
 import ActiveTab from './components/ActiveTab.js'
@@ -12,12 +24,41 @@ import GroupList from './components/groupsTab/groupList';
 import Footer from './components/Footer';
 import Login from './components/landingPage/loginPage';
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 /* App.js
     Parent component of app body and navbar (everything).
     Has a unique state for each "tab" in the application.
 */
 function App() {
   return (
+<<<<<<< HEAD
+    <ApolloProvider client={client}>
+      <div >
+        <Navbar tabStateSetter = {setTab} currTab = {currentTab}/>
+        <ActiveTab currTab = {currentTab}/>
+      </div>
+    </ApolloProvider>
+=======
     <div >
       <Navbar />
       <Routes>
@@ -27,6 +68,7 @@ function App() {
         <Route path="/events" element={<MainEvents />}/>
       </Routes>
     </div>
+>>>>>>> main
   );
 }
 

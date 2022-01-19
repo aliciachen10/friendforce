@@ -12,6 +12,9 @@ const resolvers = {
     friends: async () => {
       return Friend.find().populate('groups').populate('events');
     },
+    friend: async (parent, { profileId }) => {
+      return Friend.findOne({ id: profileId });
+    },
     groups: async () => {
       return Group.find().populate('friends');
     },
@@ -24,40 +27,33 @@ const resolvers = {
     event: async (parent, { eventId }) => {
       return Event.findOne({ _id: eventId }).populate('friends');
     },
-    profiles: async () => {
-      return Profile.find();
-    },
-    profile: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId });
-    },
   },
 
   Mutation: {
-    addEvent: async (parent, { name }) => {
-      return Event.create({ name });
+    addEvent: async (parent, { name, date, location, description, friends, creator }) => {
+      const newEvent = await Event.create({ name, date, location, description, friends, creator });
+      return newEvent;
     },
-    addFriend: async (parent, { name }) => {
-      return Friend.create({ name });
+    addFriend: async (parent, { name, address, email, phone, about_me, interests, password }) => {
+      const friend = await Friend.create({name, address, email, phone, about_me, interests, password})
+      // const token = signToken(friend); -- jennifer, not sure if this will be useful to you with auth stuff 
+      // return { token, friend };
+      return friend;
     },
-    addGroup: async (parent, { name }) => {
-      return Group.create({ name });
+    addGroup: async (parent, { name, description, friends, interests }) => {
+      return await Group.create({ name, description, friends, interests });
     },
-    addInvitationGroup: async (parent, { email }) => { //would this be the best way to create it, with the email? 
-      return InvitationGroup.create({ email });
+    addInvitationGroup: async (parent, { invitee, inviter, email, status, group }) => { //would this be the best way to create it, with the email? 
+      return await InvitationGroup.create({ invitee, inviter, email, status, group });
     },
-    addInvitationEvent: async (parent, { email }) => { //would this be the best way to create it, with the email? 
-      return InvitationGroup.create({ email });
+    addInvitationEvent: async (parent, { invitee, inviter, email, status, event }) => { //would this be the best way to create it, with the email? 
+      return await InvitationGroup.create({ email, status, event });
     },
     removeEvent: async (parent, { eventId }) => {
-      return Event.findOneAndDelete({ _id: eventId });
+      return await Event.findOneAndDelete({ _id: eventId });
     },
     removeGroup: async (parent, { groupId }) => {
-      return Group.findOneAndDelete({ _id: groupId });
-    },
-    addProfile: async (parent, { name, email, password }) => {
-      const profile = await Profile.create({ name, email, password });
-      const token = signToken(profile);
-      return { token, profile };
+      return await Group.findOneAndDelete({ _id: groupId });
     },
     login: async (parent, { email, password }) => {
       const profile = await Profile.findOne({ email });
