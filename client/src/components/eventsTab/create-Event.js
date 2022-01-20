@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { ADD_GROUP, ADD_EVENT } from "../utils/mutations";
+import { ADD_EVENT } from "../utils/mutations";
 import React, { useState } from 'react';
 
 function CreateEvent () {
