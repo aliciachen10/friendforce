@@ -28,11 +28,14 @@ function CreateEvent () {
  const handleFormSubmit = async (event) => {
    event.preventDefault();
    console.log(formState);
-
+  const temp = formState;
+  temp.friends = temp.friends.join("")
 
    try {
      const { data } = await addEvent({
-       variables: { ...formState,}
+       variables: { temp
+        //  ...formState,
+        }
      });
    } catch (e) {
      console.log(e);

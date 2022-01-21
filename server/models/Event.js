@@ -28,12 +28,12 @@ const eventSchema = new Schema({
     trim: true,
   },
   //groups: [Group], //this could be optional (invite a group rather than invite a friend)
-  friends: [
+  friends: 
     {
       type: Schema.Types.ObjectId,
       ref: 'Friend'
     }
-  ], //q: how should i indicate whether someone accepted, declined, etc.
+  , //q: how should i indicate whether someone accepted, declined, etc.
   creator: {
     type: Schema.Types.ObjectId,
     ref: 'Friend'
