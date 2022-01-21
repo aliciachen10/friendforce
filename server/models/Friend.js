@@ -63,7 +63,11 @@ const friendSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Invitation'
     }
-  ]
+  ],
+  password: {
+    type: String,
+    trim: true
+  }
 });
 
 const Friend = model('Friend', friendSchema);

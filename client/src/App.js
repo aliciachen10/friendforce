@@ -19,6 +19,27 @@ import ActiveTab from './components/ActiveTab.js'
 
 
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 /* App.js
     Parent component of app body and navbar (everything).
     Has a unique state for each "tab" in the application.
@@ -36,7 +57,7 @@ function App() {
   }, [user]);
 
   return (
-    <div >
+    <ApolloProvider client={client}>
       <Navbar />
       <Routes>
         {!user && (
@@ -71,7 +92,7 @@ function App() {
         )}
         <Route path="*" element={<Navigate to={ user ? "/dashboard" : "/login" } />} />
       </Routes>
-    </div>
+    </ApolloProvider>
   );
 };
 
