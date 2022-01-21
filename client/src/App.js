@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -6,19 +7,18 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
-import { Routes, Route } from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
-import ActiveTab from './components/ActiveTab.js'
+
+// universal components
 import Navbar from './components/Navbars/Navbar';
+import Footer from './components/Footer';
+
+// page components
 import MainFriends from './components/friendsTab/mainFriends';
 import Dashboard from './components/dashboardTab/Dashboard'
 import MainEvents from './components/eventsTab/mainEvents';
 import MainGroups from './components/groupsTab/mainGroups';
-import GroupList from './components/groupsTab/groupList';
-import Footer from './components/Footer';
-import Login from './components/landingPage/loginPage';
+import Login from './components/loginPage/loginPage';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,17 +46,55 @@ const client = new ApolloClient({
     Has a unique state for each "tab" in the application.
 */
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const u = localStorage.getItem("user");
+    u && JSON.parse(u) ? setUser(true) : setUser(false);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("user", user);
+  }, [user]);
+
   return (
     <ApolloProvider client={client}>
       <Navbar />
       <Routes>
-        <Route path="/friends" element={<MainFriends />}/>
-        <Route path="/groups" element={<MainGroups />}/>
-        <Route path="/dashboard" element={<Dashboard />}/>
-        <Route path="/events" element={<MainEvents />}/>
+        {!user && (
+          <Route 
+            path="/login" 
+            element={<Login authenticate={() => setUser(true)} />} 
+          />
+        )}
+        {user && (
+          <>
+            <Route 
+              path="/dashboard" 
+              element={
+                <Dashboard /> }
+            />
+            <Route 
+              path="/friends" 
+              element={
+                <MainFriends /> }
+            />
+            <Route 
+              path="/groups" 
+              element={
+                <MainGroups /> }
+            />
+            <Route 
+              path="/events" 
+              element={
+                <MainEvents /> }
+            />
+          </>
+        )}
+        <Route path="*" element={<Navigate to={ user ? "/dashboard" : "/login" } />} />
       </Routes>
     </ApolloProvider>
   );
-}
+};
 
 export default App;
