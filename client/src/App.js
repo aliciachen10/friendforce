@@ -61,13 +61,13 @@ function App() {
     <ApolloProvider client={client}>
       <Navbar />
       <Routes>
-        {!user && (
+        {/* {!user && (
           <Route 
             path="/login" 
             element={<Login authenticate={() => setUser(true)} />} 
           />
-        )}
-        {user && (
+        )} */}
+        {!user && (
           <>
             <Route 
               path="/dashboard" 
