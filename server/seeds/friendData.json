@@ -4,7 +4,8 @@
   "email": "Andrewbumnc@gmail.com",
   "phone": "919-111-2222",
   "about_me": "I'm Andrew and I like technical sales",
-  "interests": ["bunda", "kites", "los angeles", "ramen", "sales", "startups"]
+  "interests": ["bunda", "kites", "los angeles", "ramen", "sales", "startups"],
+  "password": "hello1234"
 },
 {
   "name": "Jared Kohrt", 
@@ -12,7 +13,8 @@
   "email": "jkohrt@gmail.com",
   "phone": "336-384-3842",
   "about_me": "I'm a compsci grad who's doing a bootcamp and don't play DnD",
-  "interests": ["birdwatching", "rollerskating", "powered paragliding", "indoor skydiving"]
+  "interests": ["birdwatching", "rollerskating", "powered paragliding", "indoor skydiving"],
+  "password": "hello1234"
 },
 {
   "name": "Alicia Chen",
@@ -20,7 +22,8 @@
   "email": "aliciachen@gmail.com",
   "phone": "702-382-9120",
   "about_me": "I'm some random person who does data science in their free time",
-  "interests": ["amusement parks", "fictitious history", "absurdism", "Samuel Beckett"]
+  "interests": ["amusement parks", "fictitious history", "absurdism", "Samuel Beckett"],
+  "password": "hello1234"
 },
 {
   "name": "Jennifer Liebelt",
@@ -28,6 +31,7 @@
   "email": "jen.libelt@gmail.com",
   "phone": "902-920-9505",
   "about_me": "I just got a job as a developer and I'm good at digital art",
-  "interests": ["photography", "journalism", "digital art", "stamp collecting"]
+  "interests": ["photography", "journalism", "digital art", "stamp collecting"],
+  "password": "hello1234"
 }
 ]
