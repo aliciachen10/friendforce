@@ -28,11 +28,17 @@ function CreateEvent () {
  const handleFormSubmit = async (event) => {
    event.preventDefault();
    console.log(formState);
+   console.log("formstate.name>>>", formState.name)
 
 
    try {
      const { data } = await addEvent({
-       variables: { ...formState,}
+       name: formState.name,
+       date: formState.date,
+       location: formState.location,
+       description: formState.description,
+       friends: ['61e8f075e326f3108c23e375', '61e8f075e326f3108c23e376'],
+       creator: '61e8f075e326f3108c23e376'
      });
    } catch (e) {
      console.log(e);
