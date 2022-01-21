@@ -20,12 +20,6 @@ import MainEvents from './components/eventsTab/mainEvents';
 import MainGroups from './components/groupsTab/mainGroups';
 import Login from './components/loginPage/loginPage';
 
-import GroupList from './components/groupsTab/groupList';
-import logo from './logo.svg';
-import ActiveTab from './components/ActiveTab.js'
-
-
-
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
