@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FriendsPage from "./friendsPage";
 import FriendList from "../util/friendList";
+import Footer from "../util/footer"
 
 
 /* MainFriends
@@ -47,7 +48,7 @@ function MainFriends () {
     function displayFriendPage(currFriend) {
         if(currFriend){
             return (
-                <div className = "flex-grow max-w-fit min-w-max">
+                <div className = "flex-grow p-4 w-full pr-2 xl:w-2/3 max-h-fit mb-16">
                     <FriendsPage user = {activeFriend} />
                 </div>  
             )
@@ -55,11 +56,14 @@ function MainFriends () {
     }
 
     return (
-        <div className="flex flex-col lg:flex-row">
-            <div className = "w-full max-h-screen pt-4 flex-grow-0">
-                <FriendList mainFriendSetter = {setActiveFriend} directory = {directory}/>
+        <div className="relative min-h-screen bg-gray-200 ">
+            <div className="flex flex-col xl:flex-row xl:w-full justify-center align-middle">
+                <div className = {`p-2 m-6 ` + (activeFriend ? 'w-full pr-12 xl:w-2/5' : 'w-full')}>
+                    <FriendList mainFriendSetter = {setActiveFriend} directory = {directory}/>
+                </div>
+                {displayFriendPage(activeFriend)}
             </div>
-            {displayFriendPage(activeFriend)}
+            <Footer/>
         </div>
     )
 }
