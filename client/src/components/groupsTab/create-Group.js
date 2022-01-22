@@ -8,6 +8,7 @@ function CreateGroup () {
     name: '',
     description: '',
     interests: '',
+    friends: '',
   });
 
   const [addGroup, {error, data}] = useMutation(ADD_GROUP);
@@ -93,6 +94,21 @@ function CreateGroup () {
                   autoComplete="interests"
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   value={formState.interests}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="col-span-6 sm:col-span-4">
+                <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
+                  Friends
+                </label>
+                <input
+                  type="text"
+                  name="friends"
+                  id="friends"
+                  autoComplete="friends"
+                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  value={formState.friends}
                   onChange={handleChange}
                 />
               </div>
