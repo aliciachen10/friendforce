@@ -23,12 +23,17 @@ function CreateGroup () {
 
  const handleFormSubmit = async (event) => {
    event.preventDefault();
-   console.log(formState);
+  //  console.log(formState);
 
 
-   try {
+   try { //       variables: { ...formState,}
      const { data } = await addGroup({
-       variables: { ...formState,}
+      variables: {
+       "name": formState.name,
+       "description": formState.description,
+       "interests": [formState.interests],
+       "friends": ["61e8f075e326f3108c23e375"]
+      }
      });
    } catch (e) {
      console.log(e);

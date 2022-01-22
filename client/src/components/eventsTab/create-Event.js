@@ -27,29 +27,23 @@ function CreateEvent () {
 
  const handleFormSubmit = async (event) => {
    event.preventDefault();
-   console.log(formState);
-   console.log("formstate.name>>>", formState.name)
 
+   const arrayOfGibberish = ['61e8f075e326f3108c23e375']
+  const loggedInCreator = '61e8f075e326f3108c23e375'
 
    try {
     //  const { data } = 
      await addEvent({
+       variables: {
        "name": formState.name,
        "date": formState.date,
        "location": formState.location,
        "description": formState.description,
-       "friends": ['61e8f075e326f3108c23e375'],
-       "creator": '61e8f075e326f3108c23e375'
+       "friends": arrayOfGibberish,
+       "creator": loggedInCreator
+       }
      });
    } catch (e) {
-     console.log({
-      name: formState.name,
-      date: formState.date,
-      location: formState.location,
-      description: formState.description,
-      friends: ['61e8f075e326f3108c23e375'],
-      creator: '61e8f075e326f3108c23e375'
-    })
      console.log(e);
    }
  }
