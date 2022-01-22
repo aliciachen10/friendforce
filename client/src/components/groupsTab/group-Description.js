@@ -1,9 +1,15 @@
 import {useState} from "react";
 import SubmitGroupField from "./group-SubmitField";
+import { useQuery } from "@apollo/client";
+import {QUERY_GROUPS, QUERY_SINGLE_GROUP} from '../utils/queries';
+
 
 function GroupDescription() {
+  
+  const { loading, data } = useQuery(QUERY_GROUPS);
+  const group = data?.groups[0] || [];
 
-  const [savedDescription, setDescription] = useState("!!!")
+  const [savedDescription, setDescription] = useState(group.description)
 
 
 

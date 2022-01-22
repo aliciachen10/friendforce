@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -7,6 +7,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import logo from './logo.svg';
 import './App.css';
 
 // universal components

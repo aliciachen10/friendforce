@@ -2,7 +2,7 @@
 import { CalendarIcon, LocationMarkerIcon, UsersIcon } from '@heroicons/react/solid'
 import EventData from './event-Data'
 import EventDescription from './event-Description'
-
+import CreateEvent from './create-Event';
 
 
 function EventsPage () {
@@ -370,6 +370,7 @@ function EventsPage () {
 
       </div>
     </>
+          <CreateEvent/>
     </div>
     </div>
     </div>
