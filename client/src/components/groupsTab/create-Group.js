@@ -1,20 +1,16 @@
 import { useMutation } from "@apollo/client";
-import { ADD_GROUP, ADD_EVENT } from "../utils/mutations";
+import { ADD_GROUP } from "../utils/mutations";
 import React, { useState } from 'react';
 
-function CreateEvent () {
-  // $name: String!, $date:String, $location:String, 
-	// 	$description:String, $friends:[ID], $creator:String
+function CreateGroup () {
+
   const [formState, setFormState] = useState({
     name: '',
-    date: '',
-    location: '',
     description: '',
-    friends: '',
-    creator: ''
+    interests: '',
   });
 
-  const [addEvent, {error, data}] = useMutation(ADD_EVENT);
+  const [addGroup, {error, data}] = useMutation(ADD_GROUP);
 
  const handleChange = (event) => {
    const { name, value } = event.target;
@@ -28,14 +24,11 @@ function CreateEvent () {
  const handleFormSubmit = async (event) => {
    event.preventDefault();
    console.log(formState);
-  const temp = formState;
-  temp.friends = temp.friends.join("")
+
 
    try {
-     const { data } = await addEvent({
-       variables: { temp
-        //  ...formState,
-        }
+     const { data } = await addGroup({
+       variables: { ...formState,}
      });
    } catch (e) {
      console.log(e);
@@ -56,12 +49,12 @@ function CreateEvent () {
             <div className="grid grid-cols-6 gap-6">
               <div className="col-span-6 sm:col-span-3">
                 <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
-                  Event name
+                  Group name
                 </label>
                 <input
                   type="text"
                   name="name"
-                  id="event-name"
+                  id="group-name"
                   autoComplete="given-name"
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   value={formState.name}
@@ -71,43 +64,13 @@ function CreateEvent () {
 
               <div className="col-span-6 sm:col-span-3">
                 <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
-                  Date
-                </label>
-                <input
-                  type="text"
-                  name="date"
-                  id="date"
-                  autoComplete="family-name"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  value={formState.date}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="col-span-6 sm:col-span-4">
-                <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
-                  Location
-                </label>
-                <input
-                  type="text"
-                  name="location"
-                  id="location"
-                  autoComplete="location"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  value={formState.location}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="col-span-6 sm:col-span-4">
-                <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
                   Description
                 </label>
                 <input
                   type="text"
                   name="description"
                   id="description"
-                  autoComplete="description"
+                  autoComplete="family-name"
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   value={formState.description}
                   onChange={handleChange}
@@ -116,30 +79,15 @@ function CreateEvent () {
 
               <div className="col-span-6 sm:col-span-4">
                 <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
-                  Friends
+                  Interests
                 </label>
                 <input
                   type="text"
-                  name="friends"
-                  id="friends"
-                  autoComplete="friends"
+                  name="interests"
+                  id="interests"
+                  autoComplete="interests"
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  value={formState.friends}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="col-span-6 sm:col-span-4">
-                <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
-                  Creator
-                </label>
-                <input
-                  type="text"
-                  name="creator"
-                  id="creator"
-                  autoComplete="creator"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  value={formState.creator}
+                  value={formState.interests}
                   onChange={handleChange}
                 />
               </div>
@@ -149,7 +97,7 @@ function CreateEvent () {
         type="submit"
         className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       >
-        Create Event
+        Create Group
       </button>
           </form>
           
@@ -165,4 +113,4 @@ function CreateEvent () {
 
 }
 
-export default CreateEvent
+export default CreateGroup

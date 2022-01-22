@@ -32,15 +32,24 @@ function CreateEvent () {
 
 
    try {
-     const { data } = await addEvent({
-       name: formState.name,
-       date: formState.date,
-       location: formState.location,
-       description: formState.description,
-       friends: ['61e8f075e326f3108c23e375', '61e8f075e326f3108c23e376'],
-       creator: '61e8f075e326f3108c23e376'
+    //  const { data } = 
+     await addEvent({
+       "name": formState.name,
+       "date": formState.date,
+       "location": formState.location,
+       "description": formState.description,
+       "friends": ['61e8f075e326f3108c23e375'],
+       "creator": '61e8f075e326f3108c23e375'
      });
    } catch (e) {
+     console.log({
+      name: formState.name,
+      date: formState.date,
+      location: formState.location,
+      description: formState.description,
+      friends: ['61e8f075e326f3108c23e375'],
+      creator: '61e8f075e326f3108c23e375'
+    })
      console.log(e);
    }
  }
