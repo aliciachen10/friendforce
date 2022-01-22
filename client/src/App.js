@@ -67,7 +67,7 @@ function App() {
             element={<Login authenticate={() => setUser(true)} />} 
           />
         )}
-        {user && (
+        {!user && (
           <>
             <Route 
               path="/dashboard" 
