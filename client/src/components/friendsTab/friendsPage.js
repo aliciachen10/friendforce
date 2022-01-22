@@ -65,32 +65,38 @@ function FriendsPage (props) {
   const [eventsState, setEvents] = useState(events)
 
   return (
-    <div>
-      <div className="flex flex-row space-x-4 m-0 lg:mx-4">
-    
-
+      <div className="flex flex-row space-x-4 p-4 m-4 lg:mx-4 bg-white rounded-lg shadom-sm overflow-auto">
         {/* Everything besides the scrolling sidebar */}
-        <div className="flex flex-col mx-auto bg-white p-4 m-4 space-x-4 rounded-lg ">
+        <div className="flex flex-col mx-auto bg-white p-4 m-4 space-x-4  max-h-screen mb-16">
             {/* Profile Pic and Name*/}
             <div className = "flex-col pb-2 self-center">
                 <img className = "rounded-full max-h-32 pb-2 m-auto" src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"></img>
                 <div className = "text-lg text-center">{user.name}</div>
             </div>
 
-            <div className="grid grid-cols-1 space-x-4 space-y-4 p-4">
+            <div className="flex flex-col flex-wrap space-x-4 space-y-4 justify-evenly p-4 xl:flex-row">
+              <div className = "flex-grow xl:w-2/5">
+                <FriendsData user = {user}/>
+              </div>
 
-              <FriendsData user = {user}/>
-              <AboutMe user = {user}/>
+              <div className = "flex-grow xl:w-2/5">
+                <AboutMe user = {user}/>
+              </div>
+                
+              <div className = "flex-grow xl:w-2/5">
+                <FriendGroups groups = {groups}/>
+              </div>
+  
+              
               
               {/* Groups section */}
-              <FriendGroups groups = {groups}/>
+              
 
               {/* Events section */}
               <FriendEvents events = {events}/>
             </div>
         </div>
       </div>
-    </div>
   )
 }
 
