@@ -23,7 +23,7 @@ db.once("open", async () => {
 
   // bulk create each model
   const events = await Event.insertMany(eventData);
-  const friends = await Friend.insertMany(friendData);
+  const friends = await Friend.create(friendData);
   const groups = await Group.insertMany(groupData);
 
   //to do: will need to seed the info for each of the invitations

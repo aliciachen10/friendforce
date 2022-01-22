@@ -1,7 +1,6 @@
 const {Event, Friend, Group, InvitationEvent, InvitationGroup } = require('../models');
 const  {GraphQLDateTime} = require("graphql-iso-date");
 const { AuthenticationError } = require('apollo-server-express');
-const { Profile } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -56,7 +55,11 @@ const resolvers = {
       return await Group.findOneAndDelete({ _id: groupId });
     },
     login: async (parent, { email, password }) => {
-      const profile = await Profile.findOne({ email });
+      const profile = await Friend.findOne({ email })
+      .populate('groups')
+      .populate('events')
+      // .populate('invitations_recieved')
+      // .populate('invitations_sent');
       if (!profile) {
         throw new AuthenticationError('No profile with this email found!');
       }

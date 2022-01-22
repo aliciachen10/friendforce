@@ -12,7 +12,7 @@ const typeDefs = gql`
 
   type Auth {
     token: ID!
-    profile: Profile
+    profile: Friend
   }
  
   type Event {

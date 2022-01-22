@@ -57,7 +57,7 @@ mutation addGroup(
 }
 `;
 
-export const LOGIN_USER = gql`
+export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
@@ -69,12 +69,3 @@ export const LOGIN_USER = gql`
   }
 `;
 
-// export const REMOVE_SKILL = gql`
-//   mutation removeSkill($skill: String!) {
-//     removeSkill(skill: $skill) {
-//       _id
-//       name
-//       skills
-//     }
-//   }
-// `;

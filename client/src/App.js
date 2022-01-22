@@ -49,6 +49,8 @@ const client = new ApolloClient({
 function App() {
   const [user, setUser] = useState(null);
 
+  const handleSetUser = (newUser) => setUser(newUser);
+
   useEffect(() => {
     const u = localStorage.getItem("user");
     u && JSON.parse(u) ? setUser(true) : setUser(false);
@@ -65,7 +67,7 @@ function App() {
         {!user && (
           <Route 
             path="/login" 
-            element={<Login authenticate={() => setUser(true)} />} 
+            element={<Login authenticate={handleSetUser} />} 
           />
         )}
         {user && (
