@@ -1,15 +1,14 @@
 
 function GroupsList(props) {
 
-const handleGroupPageClick = () => {
-  props.mainGroupSetter("grouppage")
-}
+  const groups = props.groupDirectory;
 
-  const people = [
-    { name: 'Jane Cooper', title: 'Regional Paradigm Technician', role: 'Admin', email: 'jane.cooper@example.com' },
-    { name: 'Cody Fisher', title: 'Product Directives Officer', role: 'Owner', email: 'cody.fisher@example.com' },
-    // More people...
-  ]
+  //Returns the Friend object corresponding to the friend clicked.
+  const handleGroupListClick = (e) => {
+    let groupIdentifier = e.target.getAttribute("name");
+    let selectedGroup = groups.filter((x) => {return x.name === groupIdentifier}) 
+    props.mainGroupSetter(selectedGroup[0]);
+  }
 
   return (
     <div className="flex flex-col">
@@ -29,35 +28,28 @@ const handleGroupPageClick = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Title
+                    Description
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Email
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Role
+                    Interests
                   </th>
                   <th scope="col" className="relative px-6 py-3">
-                    <span className="sr-only">Edit</span>
+                    <span className="sr-only">View Group</span>
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {people.map((person, personIdx) => (
-                  <tr key={person.email} className={personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{person.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.title}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.email}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.role}</td>
+                {groups.map((group, groupIdx) => (
+                  <tr key={group.name} className={groupIdx % 2 === 0 ? 'bg-white' : 'bg-gray-100'}>
+                    <td className="px-6 py-4  text-sm font-medium text-gray-900">{group.name}</td>
+                    <td className="px-6 py-4  text-sm text-gray-500">{group.description}</td>
+                    <td className="px-6 py-4  text-sm text-gray-500">{group.interests}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <a href="#" onClick={handleGroupPageClick} className="text-indigo-600 hover:text-indigo-900">
-                        Edit
+                      <a href="#" name = {group.name} onClick={handleGroupListClick} className="text-indigo-600 hover:text-indigo-900">
+                        View
                       </a>
                     </td>
                   </tr>
