@@ -18,11 +18,12 @@ const typeDefs = gql`
   type Event {
     _id: ID
     name: String 
-
+    date_created: Date 
+    date: Date
     location: String
     description: String 
     friends: [Friend]
-    creator: String
+    creator: Friend
   }
 
   type Friend {
