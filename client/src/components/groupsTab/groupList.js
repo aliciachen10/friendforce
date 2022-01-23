@@ -2,7 +2,6 @@
 function GroupsList(props) {
 
   const groups = props.groupDirectory;
-  console.log(groups)
 
   //Returns the Friend object corresponding to the friend clicked.
   const handleGroupListClick = (e) => {

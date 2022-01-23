@@ -4,11 +4,12 @@ export const QUERY_FRIENDS = gql`
 query getFriends {
   friends {
     _id
-    name,
-    phone,
-    email,
-    address,
-    interests,
+    name
+    phone
+    email
+    address
+    about_me
+    interests
     groups {
       name,
       description
@@ -16,7 +17,10 @@ query getFriends {
     events {
       _id,
       name,
-      description
+      description,
+      date_created
+      date
+      location
     }
   }
 }

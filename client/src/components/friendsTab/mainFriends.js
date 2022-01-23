@@ -3,6 +3,9 @@ import FriendsPage from "./friendsPage";
 import FriendList from "../util/friendList";
 import Footer from "../util/footer"
 
+import { useQuery } from "@apollo/client";
+import {QUERY_FRIENDS} from '../utils/queries';
+
 
 /* MainFriends
     Controller for Friend tab's appearance. Clicking on a user in the list
@@ -13,6 +16,9 @@ function MainFriends () {
 
     //Display is either the friendlist or a friendpage based on this state.
     const [activeFriend, setActiveFriend] = useState("");
+
+    //Get all Friends via the api and store it as a state
+    const { loading, data } = useQuery(QUERY_FRIENDS);
 
     //This state is what needs to be set by the api call.
     //If time allows, we should narrow this search to people in groups with you.
@@ -44,6 +50,8 @@ function MainFriends () {
       ]
     const [directory, setDirectory] = useState(people);
 
+
+
     //Conditionally render child component based on state
     function displayFriendPage(currFriend) {
         if(currFriend){
@@ -59,7 +67,16 @@ function MainFriends () {
         <div className="relative min-h-screen bg-gray-200 ">
             <div className="flex flex-col xl:flex-row xl:w-full justify-center align-middle">
                 <div className = {`p-2 m-6 ` + (activeFriend ? 'w-full pr-12 xl:w-2/5' : 'w-full')}>
-                    <FriendList mainFriendSetter = {setActiveFriend} directory = {directory}/>
+
+                    {
+                        loading ? (
+                            <div>loading...</div>
+                        ) : (
+                            <FriendList 
+                            mainFriendSetter = {setActiveFriend} 
+                            directory = {data.friends}/>
+                        )
+                    }
                 </div>
                 {displayFriendPage(activeFriend)}
             </div>

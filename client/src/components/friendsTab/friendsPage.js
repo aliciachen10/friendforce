@@ -5,6 +5,7 @@ import FriendSidebar from './friendsList-sidebar';
 import FriendGroups from './friends-Groups';
 import FriendEvents from './friends-Events';
 
+
 function FriendsPage (props) {
 
   //TODO: Set by user clicking something in the list (frontend)
@@ -33,6 +34,7 @@ function FriendsPage (props) {
   const [groupsState, setGroups] = useState(groups)
 
   //TODO: Set by initial db call in useEffect (backend/frontend). Events is a placeholder value.
+
   const events = [
     {
       id: 1,
@@ -64,6 +66,8 @@ function FriendsPage (props) {
   ]
   const [eventsState, setEvents] = useState(events)
 
+  
+
   return (
       <div className="flex flex-row space-x-4 p-4 m-4 lg:mx-4 bg-white rounded-lg shadom-sm overflow-auto">
         {/* Everything besides the scrolling sidebar */}
@@ -75,25 +79,21 @@ function FriendsPage (props) {
             </div>
 
             <div className="flex flex-col flex-wrap space-x-4 space-y-4 justify-evenly p-4 xl:flex-row">
-              <div className = "flex-grow xl:w-2/5">
+              <div className = "flex-grow 2xl:w-2/5">
                 <FriendsData user = {user}/>
               </div>
 
-              <div className = "flex-grow xl:w-2/5">
+              <div className = "flex-grow w-full 2xl:w-2/5">
                 <AboutMe user = {user}/>
               </div>
                 
-              <div className = "flex-grow xl:w-2/5">
-                <FriendGroups groups = {groups}/>
+              <div className = "flex-grow min-w-full 2xl:w-2/5">
+                <FriendGroups user = {user}/>
               </div>
   
-              
-              
-              {/* Groups section */}
-              
-
-              {/* Events section */}
-              <FriendEvents events = {events}/>
+              <div className = "flex-grow min-w-full 2xl:w-2/5">
+                <FriendEvents user = {user}/>
+              </div>
             </div>
         </div>
       </div>
