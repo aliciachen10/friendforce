@@ -12,9 +12,6 @@ import { QUERY_FRIENDS } from '../utils/queries';
     info, etc. This is used to activate and populate the FriendPage component.
 */
 function MainFriends () {
-  const { loading, data } = useQuery(QUERY_FRIENDS);
-  const people = data?.friends || [];
-
     //Display is either the friendlist or a friendpage based on this state.
     const [activeFriend, setActiveFriend] = useState("");
 
@@ -23,11 +20,7 @@ function MainFriends () {
 
     //This state is what needs to be set by the api call.
     //If time allows, we should narrow this search to people in groups with you.
-  
-    const [directory, setDirectory] = useState(people);
-
-
-
+    
     //Conditionally render child component based on state
     function displayFriendPage(currFriend) {
         if(currFriend){
