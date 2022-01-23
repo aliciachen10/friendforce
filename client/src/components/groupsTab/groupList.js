@@ -1,15 +1,13 @@
+import { useQuery } from '@apollo/client';
+import { QUERY_GROUPS } from '../utils/queries';
 
 function GroupsList(props) {
+  const { loading, data } = useQuery(QUERY_GROUPS);
+  const people = data?.groups || [];
 
 const handleGroupPageClick = () => {
   props.mainGroupSetter("grouppage")
 }
-
-  const people = [
-    { name: 'Jane Cooper', title: 'Regional Paradigm Technician', role: 'Admin', email: 'jane.cooper@example.com' },
-    { name: 'Cody Fisher', title: 'Product Directives Officer', role: 'Owner', email: 'cody.fisher@example.com' },
-    // More people...
-  ]
 
   return (
     <div className="flex flex-col">
@@ -29,19 +27,13 @@ const handleGroupPageClick = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Title
+                    Description
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Email
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Role
+                    Interests
                   </th>
                   <th scope="col" className="relative px-6 py-3">
                     <span className="sr-only">Edit</span>
@@ -52,9 +44,12 @@ const handleGroupPageClick = () => {
                 {people.map((person, personIdx) => (
                   <tr key={person.email} className={personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{person.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.title}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.email}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.role}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.description}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{
+                    person.interests.map((interest) => (
+                      <ol>{interest}</ol>
+                    ))
+                    }</td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <a href="#" onClick={handleGroupPageClick} className="text-indigo-600 hover:text-indigo-900">
                         Edit

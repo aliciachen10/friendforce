@@ -1,4 +1,9 @@
+import { useQuery } from '@apollo/client';
+import { QUERY_SINGLE_FRIEND } from '../utils/queries';
+
 function FriendGroups(props) {
+  const { loading, data } = useQuery(QUERY_SINGLE_FRIEND);
+  const person = data?.friend?.groups || [];
     let dbGroups = props.groups;
 
     return(

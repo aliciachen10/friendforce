@@ -12,7 +12,7 @@ const resolvers = {
       return Friend.find().populate('groups').populate('events');
     },
     friend: async (parent, { profileId }) => {
-      return Friend.findOne({ id: profileId });
+      return Friend.findOne({ id: profileId }).populate('groups');
     },
     groups: async () => {
       return Group.find().populate('friends');
