@@ -1,18 +1,16 @@
 import { printIntrospectionSchema } from "graphql";
+import { useQuery } from '@apollo/client';
+import { QUERY_EVENTS } from '../utils/queries';
 
 function EventsList(props) {
 
-
+  const { loading, data } = useQuery(QUERY_EVENTS);
+  const eventsObject = data?.events || [];
+  const people = Object.values(eventsObject)
+  console.log("people", people)
   const handleEventPageClick = () => {
     props.mainEventSetter("eventpage");
   }
-
-
-  const people = [
-    { name: 'Jane Cooper', title: 'Regional Paradigm Technician', role: 'Admin', email: 'jane.cooper@example.com' },
-    { name: 'Cody Fisher', title: 'Product Directives Officer', role: 'Owner', email: 'cody.fisher@example.com' },
-    // More people...
-  ]
 
   return (
     <div className="flex flex-col">
@@ -32,20 +30,26 @@ function EventsList(props) {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Title
+                    Date
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Email
+                    Location
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Role
+                    Description
                   </th>
+                  {/* <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Friends
+                  </th> */}
                   <th scope="col" className="relative px-6 py-3">
                     <span className="sr-only">Edit</span>
                   </th>
@@ -53,11 +57,17 @@ function EventsList(props) {
               </thead>
               <tbody>
                 {people.map((person, personIdx) => (
-                  <tr key={person.email} className={personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                  // <tr key={person.email} className={personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                  <tr>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{person.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.title}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.email}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.role}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.date}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.location}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.description}</td>
+                    {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.friends.map(
+                      (friend) => (
+                        <ul>{friend}</ul>
+                      )
+                    )}</td> */}
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <a href="#" onClick={handleEventPageClick} className="text-indigo-600 hover:text-indigo-900">
                         Edit

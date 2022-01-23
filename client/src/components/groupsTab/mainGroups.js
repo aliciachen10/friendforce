@@ -1,6 +1,7 @@
 import {useState,useEffect} from "react";
 import GroupsList from "./groupList";
 import GroupsPage from "./groupsPage";
+
 import Footer from "../util/footer";
 import { useQuery } from "@apollo/client";
 import {QUERY_GROUPS, QUERY_SINGLE_GROUP} from '../utils/queries';
@@ -8,6 +9,8 @@ import { selectionSetMatchesResult } from "@apollo/client/cache/inmemory/helpers
 
 
 function MainGroups () {
+  // const { loading, data } = useQuery(QUERY_FRIENDS);
+  // const people = data?.groups || [];
 
     //Display is either the friendlist or a friendpage based on this state.
     const [activeGroup, setActiveGroup] = useState("");

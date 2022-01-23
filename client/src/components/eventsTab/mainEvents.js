@@ -4,7 +4,6 @@ import EventsList from "./eventsList";
 
 
 
-
 function MainEvents () {
 
 
