@@ -4,8 +4,7 @@ import FriendList from "../util/friendList";
 import Footer from "../util/footer"
 
 import { useQuery } from "@apollo/client";
-import {QUERY_FRIENDS} from '../utils/queries';
-
+import { QUERY_FRIENDS } from '../utils/queries';
 
 /* MainFriends
     Controller for Friend tab's appearance. Clicking on a user in the list
@@ -13,6 +12,8 @@ import {QUERY_FRIENDS} from '../utils/queries';
     info, etc. This is used to activate and populate the FriendPage component.
 */
 function MainFriends () {
+  const { loading, data } = useQuery(QUERY_FRIENDS);
+  const people = data?.friends || [];
 
     //Display is either the friendlist or a friendpage based on this state.
     const [activeFriend, setActiveFriend] = useState("");
@@ -22,32 +23,7 @@ function MainFriends () {
 
     //This state is what needs to be set by the api call.
     //If time allows, we should narrow this search to people in groups with you.
-    const people = [
-        {
-            "name": "Andrew Bumgarner",
-            "address": "420 Alameda Ave. Los Angeles, CA",
-            "email": "Andrewbumnc@gmail.com",
-            "phone": "919-111-2222",
-            "about_me": "I'm Andrew and I like technical sales",
-            "interests": ["bunda", "kites", "los angeles", "ramen", "sales", "startups"]
-          },
-          {
-            "name": "Jared Kohrt", 
-            "address": "69 Loblolly Pine Dr. Raleigh, NC",
-            "email": "jkohrt@gmail.com",
-            "phone": "336-384-3842",
-            "about_me": "I'm a compsci grad who's doing a bootcamp and don't play DnD",
-            "interests": ["birdwatching", "rollerskating", "powered paragliding", "indoor skydiving"]
-          },
-          {
-            "name": "Alicia Chen",
-            "address": "3802 Giant Teddy Bear St. Chapel Hill, NC",
-            "email": "aliciachen@gmail.com",
-            "phone": "702-382-9120",
-            "about_me": "I'm some random person who does data science in their free time",
-            "interests": ["amusement parks", "fictitious history", "absurdism", "Samuel Beckett"]
-          }
-      ]
+  
     const [directory, setDirectory] = useState(people);
 
 

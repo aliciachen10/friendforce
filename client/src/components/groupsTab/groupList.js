@@ -1,5 +1,9 @@
+import { useQuery } from '@apollo/client';
+import { QUERY_GROUPS } from '../utils/queries';
 
 function GroupsList(props) {
+  const { loading, data } = useQuery(QUERY_GROUPS);
+  const people = data?.groups || [];
 
   const groups = props.groupDirectory;
 
@@ -9,6 +13,7 @@ function GroupsList(props) {
     let selectedGroup = groups.filter((x) => {return x.name === groupIdentifier}) 
     props.mainGroupSetter(selectedGroup[0]);
   }
+
 
   return (
     <div className="flex flex-col">

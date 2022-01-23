@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
+const bcrypt = require('bcrypt');
 // fields are name, date created, address, phone number, email, and can be connected to the group the contact is in
 //q: are friends going to be able to friend each other, or is their only linkage through the groups they are in? 
 const friendSchema = new Schema({
@@ -52,23 +53,37 @@ const friendSchema = new Schema({
       ref: 'Event'
     }
   ],
-  invitations_received: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Invitation'
-    }
-  ],
-  invitations_sent: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Invitation'
-    }
-  ],
+  // invitations_received: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'Invitation'
+  //   }
+  // ],
+  // invitations_sent: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: 'Invitation'
+  //   }
+  // ],
   password: {
     type: String,
     trim: true
   }
 });
+
+friendSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+// compare the incoming password with the hashed password
+friendSchema.methods.isCorrectPassword = async function(password) {
+  return bcrypt.compare(password, this.password);
+};
 
 const Friend = model('Friend', friendSchema);
 
