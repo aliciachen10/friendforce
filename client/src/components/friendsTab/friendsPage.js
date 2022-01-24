@@ -18,32 +18,6 @@ function FriendsPage (props) {
   //TODO: Set by initial db call in useEffect (backend/frontend). Directory is a placeholder value.
   const [directoryState, setDirectory] = useState(directory);
 
-  //Broken for now; backend issues.
-  // const { loading, data } = useQuery(QUERY_SINGLE_GROUP, {
-  //   variables: {eventID}
-  // });
-
-
-  //TODO: Set by initial db call in useEffect (backend/frontend). Groups is a placeholder value.
-  const groups = [
-    {
-      name: 'Groupo-de-seis',
-      email: "placeholder"
-    },
-    {
-      name: 'Nerf Herders',
-      email: "another placeholder"
-    },
-    {
-      name: 'Chess Club',
-      email: "Yet another ph"
-     
-    },
-  ]
-  const [groupsState, setGroups] = useState(groups)
-
-  //TODO: Set by initial db call in useEffect (backend/frontend). Events is a placeholder value.
-
   const events = [
     {
       id: 1,

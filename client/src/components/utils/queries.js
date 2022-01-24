@@ -96,6 +96,8 @@ query getEvents {
     friends {
       _id
       name
+      email
+      phone
     }
     creator {
       _id

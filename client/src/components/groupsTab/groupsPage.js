@@ -8,7 +8,6 @@ import CreateEvent from './create-Group';
 
 function GroupsPage (props) {
   const selectedGroup = props.group;
-  console.log(selectedGroup.friends)
 
   //Placeholder: need a useQuery to get events of a group.
   const events = [

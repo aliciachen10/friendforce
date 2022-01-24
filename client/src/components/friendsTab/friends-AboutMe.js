@@ -2,7 +2,6 @@ import SubmitField from "./friends-SubmitField"
 import {useState} from "react";
 
 function AboutMe(props) {
-  console.log(props.user)
 
   return (
     <div className = "flex flex-col"> 

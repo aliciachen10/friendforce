@@ -4,13 +4,15 @@ import { QUERY_EVENTS } from '../utils/queries';
 
 function EventsList(props) {
 
-  const { loading, data } = useQuery(QUERY_EVENTS);
-  const eventsObject = data?.events || [];
-  const people = Object.values(eventsObject)
-  console.log("people", people)
-  const handleEventPageClick = () => {
-    props.mainEventSetter("eventpage");
+  const events = props.eventDirectory;
+
+  //Returns the Friend object corresponding to the friend clicked.
+  const handleEventPageClick = (e) => {
+      let eventID = e.target.getAttribute("event_id");
+      let selectedUser = events.filter((x) => {return x._id === eventID}) 
+      props.mainEventSetter(selectedUser[0]);
   }
+
 
   return (
     <div className="flex flex-col">
@@ -56,20 +58,19 @@ function EventsList(props) {
                 </tr>
               </thead>
               <tbody>
-                {people.map((person, personIdx) => (
-                  // <tr key={person.email} className={personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                  <tr>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{person.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.date}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.location}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.description}</td>
+                {events.map((event, personIdx) => (
+                  <tr key={event._id} className={personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{event.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{event.date}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{event.location}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{event.description}</td>
                     {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.friends.map(
                       (friend) => (
                         <ul>{friend}</ul>
                       )
                     )}</td> */}
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <a href="#" onClick={handleEventPageClick} className="text-indigo-600 hover:text-indigo-900">
+                      <a event_id = {event._id} href="#" onClick={handleEventPageClick} className="text-indigo-600 hover:text-indigo-900">
                         Edit
                       </a>
                     </td>

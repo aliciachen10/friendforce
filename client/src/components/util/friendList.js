@@ -4,7 +4,6 @@ import React, {useState} from "react";
 function FriendList(props) {
 
     const people = props.directory;
-    console.log()
 
     //Returns the Friend object corresponding to the friend clicked.
     const handleFriendPageClick = (e) => {
