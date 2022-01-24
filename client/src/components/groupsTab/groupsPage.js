@@ -2,7 +2,7 @@
 import { CalendarIcon, LocationMarkerIcon, UsersIcon } from '@heroicons/react/solid'
 import GroupData from './group-Data';
 import GroupDescription from './group-Description'
-import CreateEvent from './create-Group';
+import CreateGroup from './create-Group';
 
 function GroupsPage () {
 
@@ -289,6 +289,7 @@ function GroupsPage () {
               </li>
             ))}
           </ul>
+          
         </div>
       ))}
     </nav>
@@ -296,11 +297,11 @@ function GroupsPage () {
 
 
    <div className="col-span-4"> 
-
+    <CreateGroup/>
             
     <> 
      <div className="grid grid-cols-2 gap-10">
-   
+    
               <GroupData/>
       {/* end of first details container*/}
       <GroupDescription/> 
@@ -371,7 +372,8 @@ function GroupsPage () {
 
       </div>
     </>
-          <CreateEvent/>
+  
+      
    
     </div>
     </div>

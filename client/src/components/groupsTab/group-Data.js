@@ -21,7 +21,12 @@ return (
 
       
   <div> 
+    
      <div>
+       
+     <div>
+       <h3 className="text-lg leading-6 font-medium text-gray-900">Group</h3>
+     </div>
      </div>
      <div className="mt-5 border-t border-gray-200">
        <dl className="divide-y divide-gray-200">
