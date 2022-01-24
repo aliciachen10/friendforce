@@ -1,32 +1,50 @@
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import GroupsList from "./groupList";
 import GroupsPage from "./groupsPage";
-import { useQuery } from '@apollo/client';
-import { QUERY_GROUPS } from '../utils/queries';
+
+import Footer from "../util/footer";
+import { useQuery } from "@apollo/client";
+import {QUERY_GROUPS, QUERY_SINGLE_GROUP} from '../utils/queries';
+import { selectionSetMatchesResult } from "@apollo/client/cache/inmemory/helpers";
+
 
 function MainGroups () {
   // const { loading, data } = useQuery(QUERY_FRIENDS);
   // const people = data?.groups || [];
 
+    //Display is either the friendlist or a friendpage based on this state.
+    const [activeGroup, setActiveGroup] = useState("");
 
-    const [groupState, setGroupState] = useState("grouplist");
+    //Get all Groups via the api and store it as a state
+    const { loading, data } = useQuery(QUERY_GROUPS);
 
-
-    function displayGroupPage(groupOption) {
-        if(groupOption === "grouppage"){
-            return <GroupsPage mainGroupSetter = {setGroupState}/>
-
-        }
-        else if (groupOption === "grouplist") {
-            return <GroupsList mainGroupSetter = {setGroupState}/>
+    //GroupPage only displays if a specific group has been selected from the list.
+    function displayGroupPage(currGroup) {
+        if(currGroup){
+            return (
+                <div className = "flex-grow p-4 w-full pr-2 xl:w-2/3 max-h-fit mb-16">
+                    <GroupsPage group = {activeGroup} groupDirectory = {data.groups}/>
+                </div>  
+            )
         }
     }
 
-
-
     return (
-        <div>
-            {displayGroupPage(groupState)}
+        <div className="relative min-h-screen bg-gray-200 ">
+            <div className="flex flex-col xl:flex-row xl:w-full justify-center align-middle">
+                <div className = {`p-2 m-6 ` + (activeGroup ? 'w-full pr-12 xl:w-2/5' : 'w-full')}>
+                    {/* Will only display list of groups once data has been loaded form api */}
+                    {loading ? (
+                        <div>Loading...</div>
+                    ) : (
+                        <GroupsList 
+                        mainGroupSetter = {setActiveGroup} 
+                        groupDirectory = {data.groups}/>
+                    )}
+                </div>
+                {displayGroupPage(activeGroup)}
+            </div>
+            <Footer/>
         </div>
     )
 }

@@ -40,6 +40,7 @@ function CreateEvent () {
     "friends": arrayOfGibberish,
     "creator": loggedInCreator
     }))
+
    try {
     //  const { data } = 
      await addEvent({
@@ -60,6 +61,7 @@ function CreateEvent () {
 
 
     return (
+
 
       
 
@@ -97,6 +99,7 @@ function CreateEvent () {
                 <div className="relative p-6 flex-auto">
                   {/* <CreateEvent/> */}
                   <div className="md:grid md:grid-cols-3 md:gap-6">
+
         <div className="md:col-span-1">
           <h3 className="text-lg font-medium leading-6 text-gray-900">Event Information</h3>
           <p className="mt-1 text-sm text-gray-500">Use a permanent address where you can receive mail.</p>
