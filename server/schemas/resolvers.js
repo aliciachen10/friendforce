@@ -12,7 +12,7 @@ const resolvers = {
       return Friend.find().populate('groups').populate('events');
     },
     friend: async (parent, { friendId }) => {
-      const result = await Friend.findOne({ _id: friendId }).populate('groups');
+      const result = await Friend.findOne({ _id: friendId }).populate('groups').populate('events');
 
       return result;
     },
@@ -32,7 +32,9 @@ const resolvers = {
       return Event.findOne({ _id: eventId }).populate('friends');
     },
     me: async (parent, args, context) => {
+      console.log("context", context.user)
       if (context.user) {
+        console.log("context.user", context.user)
         return Friend.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError('You need to be logged in!');

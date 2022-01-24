@@ -8,6 +8,10 @@ function EventsList(props) {
   const eventsObject = data?.events || [];
   const people = Object.values(eventsObject)
   console.log("people", people)
+
+  //add to people object OR update database 
+  // useEffect()
+
   const handleEventPageClick = () => {
     props.mainEventSetter("eventpage");
   }

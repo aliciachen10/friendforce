@@ -11,8 +11,8 @@ import ffLogo from '../../img/ff.png';
 function Login(props) {
 
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error }] = useMutation(LOGIN);
-
+  const [login, { error, data }] = useMutation(LOGIN);
+  console.log("login", login)
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {

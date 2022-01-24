@@ -26,6 +26,7 @@ query getFriends {
 export const QUERY_ME = gql`
   query me {
     me {
+      _id
       name
       address
       phone
