@@ -1,30 +1,25 @@
 import { useMutation } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
 import React, { useState } from 'react';
-import Calendar from "react-calendar";
-import 'react-calendar/dist/Calendar.css';
+
 
 function CreateEvent () {
   // $name: String!, $date:String, $location:String, 
 	// 	$description:String, $friends:[ID], $creator:String
   const [formState, setFormState] = useState({
     name: '',
-    // date: '',
+    date: '',
     location: '',
     description: '',
     friends: '',
     creator: ''
   });
-  const [dateValue, setDateValue] = useState(new Date());
+
   const [addEvent, {error, data}] = useMutation(ADD_EVENT);
 
  const handleChange = (event) => {
    const { name, value } = event.target;
 
-   setDateValue({
-     ...setDateValue,
-     [name]: value,
-   })
    setFormState({
      ...formState,
      [name]: value,
@@ -33,17 +28,17 @@ function CreateEvent () {
 
  const handleFormSubmit = async (event) => {
    event.preventDefault();
+   console.log("this works")
 
-   const arrayOfGibberish = ['61e8f075e326f3108c23e375'];
-  const loggedInCreator = '61e8f075e326f3108c23e375';
-  console.log(formState.date)
+   const arrayOfGibberish = ['61e8f075e326f3108c23e375']
+  const loggedInCreator = '61e8f075e326f3108c23e375'
 
    try {
     //  const { data } = 
      await addEvent({
        variables: {
        "name": formState.name,
-       "date": dateValue,
+       "date": formState.date,
        "location": formState.location,
        "description": formState.description,
        "friends": arrayOfGibberish,
@@ -97,6 +92,7 @@ function CreateEvent () {
                   <div className="md:grid md:grid-cols-3 md:gap-6">
         <div className="md:col-span-1">
           <h3 className="text-lg font-medium leading-6 text-gray-900">Event Information</h3>
+          <p className="mt-1 text-sm text-gray-500">Use a permanent address where you can receive mail.</p>
         </div>
         <div className="mt-5 md:mt-0 md:col-span-2">
           <form onSubmit={handleFormSubmit}>
@@ -109,14 +105,27 @@ function CreateEvent () {
                   type="text"
                   name="name"
                   id="event-name"
-                  autoComplete="given-name"
+                  autoComplete="event-name"
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   value={formState.name}
                   onChange={handleChange}
                 />
               </div>
 
-              
+              <div className="col-span-6 sm:col-span-3">
+                <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
+                  Date
+                </label>
+                <input
+                  type="text"
+                  name="date"
+                  id="date"
+                  autoComplete="date"
+                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  value={formState.date}
+                  onChange={handleChange}
+                />
+              </div>
 
               <div className="col-span-6 sm:col-span-4">
                 <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
@@ -175,18 +184,6 @@ function CreateEvent () {
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   value={formState.creator}
                   onChange={handleChange}
-                />
-              </div>
-              <div className="col-span-6 sm:col-span-6">
-                <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
-                  Date
-                </label>
-                <Calendar
-                  name="date"
-                  id="date"
-                  // className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                  onChange={handleChange}
-                  value={dateValue}
                 />
               </div>
 
