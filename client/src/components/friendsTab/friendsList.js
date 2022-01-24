@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import { useQuery } from '@apollo/client';
+import { QUERY_FRIENDS, QUERY_SINGLE_FRIEND, QUERY_ME } from '../utils/queries';
 
 function FriendsList(props) {
 
@@ -6,11 +8,14 @@ function FriendsList(props) {
     props.mainFriendSetter("friendpage");
   }
 
-  const people = [
-    { name: 'Jane Cooper', title: 'Regional Paradigm Technician', role: 'Admin', email: 'jane.cooper@example.com' },
-    { name: 'Cody Fisher', title: 'Product Directives Officer', role: 'Owner', email: 'cody.fisher@example.com' },
-    // More people...
-  ]
+  const { loading, data } = useQuery(QUERY_FRIENDS);
+  const people = data?.friends || [];
+
+  // const people = [
+  //   { name: 'Jane Cooper', title: 'Regional Paradigm Technician', role: 'Admin', email: 'jane.cooper@example.com' },
+  //   { name: 'Cody Fisher', title: 'Product Directives Officer', role: 'Owner', email: 'cody.fisher@example.com' },
+  //   // More people...
+  // ]
 
   return (
     <div className="flex flex-col">
@@ -30,7 +35,7 @@ function FriendsList(props) {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Title
+                    Phone
                   </th>
                   <th
                     scope="col"
@@ -42,7 +47,7 @@ function FriendsList(props) {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Role
+                    About Me
                   </th>
                   <th scope="col" className="relative px-6 py-3">
                     <span className="sr-only">Edit</span>
@@ -53,9 +58,9 @@ function FriendsList(props) {
                 {people.map((person, personIdx) => (
                   <tr key={person.email} className={personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{person.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.title}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.phone}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.email}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.role}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.about_me}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <a href="#" onClick={handleFriendPageClick} className="text-indigo-600 hover:text-indigo-900">
                         Edit

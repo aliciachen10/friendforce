@@ -15,6 +15,7 @@ function GroupsList(props) {
     props.mainGroupSetter(selectedGroup[0]);
   }
 
+
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

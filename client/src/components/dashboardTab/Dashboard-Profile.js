@@ -1,11 +1,16 @@
 import { useQuery } from '@apollo/client';
-import { QUERY_FRIENDS, QUERY_SINGLE_FRIEND } from '../utils/queries';
+import { QUERY_FRIENDS, QUERY_SINGLE_FRIEND, QUERY_ME } from '../utils/queries';
 import React, {useState} from 'react';
 import SubmitField from './Dashboard-SubmitField';
+import Auth from '../utils/auth';
 
 function DashboardProfile() {
-    const { loading, data } = useQuery(QUERY_FRIENDS);
-    const friend = data?.friends[0] || []; //need to change this to the data that i actually need 
+    const friendId = Auth.getProfile().data._id
+    const { loading, data } = useQuery(
+      // friendId ? QUERY_SINGLE_FRIEND : QUERY_ME,
+      QUERY_SINGLE_FRIEND,
+      {variables: {friendId: friendId}});
+    const friend = data?.friend || [];
     
     const [canEdit, setEdit] = useState(false);
 
@@ -14,11 +19,6 @@ function DashboardProfile() {
     const [savedEmail, setEmail]       = useState(friend.email);
     const [savedAddress, setAddress]   = useState(friend.address);
     const [savedHobby, setHobby]       = useState(friend.interests);
-
-    // const [savedPhone, setPhone]       = useState(friend.phone); 
-    // const [savedEmail, setEmail]       = useState(friend.email);
-    // const [savedAddress, setAddress]   = useState(friend.address);
-    // const [savedHobby, setHobby]       = useState(friend.interests[0]); //to do: change this to an array of interests 
 
     return(
         <section className="flex flex-col bg-white w-full rounded-lg p-4 gap-y-4 shadow-sm">
