@@ -26,14 +26,16 @@ query getFriends {
 }
 `;
 
-export const QUERY_SINGLE_FRIEND = gql`
-  query singleFriend($id: ID!) {
-    friend(id: $id) {
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
       name
       address
       phone
       email
       interests
+      about_me
       groups {
         _id 
         name
@@ -42,6 +44,29 @@ export const QUERY_SINGLE_FRIEND = gql`
       events {
         _id 
         name 
+        description
+      }
+    }
+  }
+`;
+
+export const QUERY_SINGLE_FRIEND = gql`
+  query singleFriend($friendId: ID!) {
+    friend(friendId: $friendId) {
+      _id
+      name,
+      phone,
+      email,
+      address,
+      interests,
+      about_me,
+      groups {
+        name,
+        description
+      },
+      events {
+        _id,
+        name,
         description
       }
     }
@@ -65,7 +90,7 @@ query getGroups {
 }
 `;
 
-export const QUERY_SINGLE_GROUP = gql `
+export const QUERY_SINGLE_GROUP = gql`
 query singleGroup($id: ID!) {
   group(id: $id) {
     name
@@ -104,9 +129,9 @@ query getEvents {
 `;
 
 
-export const QUERY_SINGLE_EVENT = gql `
+export const QUERY_SINGLE_EVENT = gql`
 query singleEvent ($id: id!) {
-  event(id: $id) {
+  event(_id: $id) {
     name
     date_created
     date

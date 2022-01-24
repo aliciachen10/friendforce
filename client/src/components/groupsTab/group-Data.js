@@ -4,9 +4,6 @@ import { useQuery } from "@apollo/client";
 import {QUERY_GROUPS, QUERY_SINGLE_GROUP} from '../utils/queries';
 
 function GroupData (props) {
-
-
-
   return ( 
     <div className="m-4"> 
       <div>
