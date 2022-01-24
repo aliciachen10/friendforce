@@ -2,7 +2,7 @@
 import { CalendarIcon, LocationMarkerIcon, UsersIcon } from '@heroicons/react/solid'
 import EventData from './event-Data'
 import EventDescription from './event-Description'
-
+import CreateEvent from './create-Event'
 
 
 function EventsPage () {
@@ -366,7 +366,7 @@ function EventsPage () {
       </ul>
     </div>
       </div> 
-      {/* end of 4th details container */}
+    <CreateEvent/>
 
       </div>
     </>

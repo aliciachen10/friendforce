@@ -6,7 +6,7 @@ import ActiveTab from './components/ActiveTab.js'
 import Navbar from './components/Navbars/Navbar';
 import GroupList from './components/groupsTab/groupList';
 import Footer from './components/Footer';
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 /* App.js
     Parent component of app body and navbar (everything).
     Has a unique state for each "tab" in the application.
