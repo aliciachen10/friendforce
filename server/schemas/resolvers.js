@@ -48,9 +48,8 @@ const resolvers = {
     },
     addFriend: async (parent, { name, address, email, phone, about_me, interests, password }) => {
       const friend = await Friend.create({name, address, email, phone, about_me, interests, password})
-      // const token = signToken(friend); -- jennifer, not sure if this will be useful to you with auth stuff 
-      // return { token, friend };
-      return friend;
+      const token = signToken(friend);
+      return { friend, token };
     },
     addGroup: async (parent, { name, description, friends, interests }) => {
       return await Group.create({ name, description, friends, interests });
