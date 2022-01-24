@@ -30,7 +30,7 @@ function CreateEvent () {
    event.preventDefault();
    console.log("this works")
 
-   const arrayOfGibberish = ['61e8f075e326f3108c23e375']
+  const arrayOfGibberish = ['61e8f075e326f3108c23e375']
   const loggedInCreator = '61e8f075e326f3108c23e375'
 
    try {
