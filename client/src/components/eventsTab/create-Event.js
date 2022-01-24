@@ -29,7 +29,7 @@ function CreateEvent () {
    event.preventDefault();
 
    const arrayOfGibberish = ['61e8f075e326f3108c23e375']
-  const loggedInCreator = '61e8f075e326f3108c23e375'
+   const loggedInCreator = '61e8f075e326f3108c23e375'
 
    try {
     //  const { data } = 
@@ -50,7 +50,6 @@ function CreateEvent () {
 
 
     return (
-
       <div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div className="md:grid md:grid-cols-3 md:gap-6">
         <div className="md:col-span-1">
