@@ -3,13 +3,6 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   scalar Date 
 
-  type Profile {
-    _id: ID
-    name: String
-    email: String
-    password: String
-  }
-
   type Auth {
     token: ID!
     profile: Friend
@@ -71,7 +64,7 @@ const typeDefs = gql`
     event: Event
     events: [Event]
     friends: [Friend]
-    friend(profileId: ID!): Friend
+    friend(friendId: ID!): Friend
     groups: [Group]
     group: Group
     invitationEvents: [InvitationEvent]

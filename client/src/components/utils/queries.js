@@ -47,8 +47,9 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_SINGLE_FRIEND = gql`
-  query singleFriend($profileId: ID!) {
-    friend(profileId: $profileId) {
+  query singleFriend($friendId: ID!) {
+    friend(friendId: $friendId) {
+      _id
       name
       address
       phone
@@ -125,9 +126,9 @@ query getEvents {
 `;
 
 
-export const QUERY_SINGLE_EVENT = gql `
+export const QUERY_SINGLE_EVENT = gql`
 query singleEvent ($id: id!) {
-  event(id: $id) {
+  event(_id: $id) {
     name
     date_created
     date

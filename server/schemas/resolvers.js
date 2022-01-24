@@ -11,8 +11,10 @@ const resolvers = {
     friends: async () => {
       return Friend.find().populate('groups').populate('events');
     },
-    friend: async (parent, { profileId }) => {
-      return Friend.findOne({ _id: profileId }).populate('groups');
+    friend: async (parent, { friendId }) => {
+      const result = await Friend.findOne({ _id: friendId }).populate('groups');
+
+      return result;
     },
     groups: async () => {
       return Group.find().populate('friends');
