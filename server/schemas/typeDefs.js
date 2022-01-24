@@ -27,6 +27,7 @@ const typeDefs = gql`
     email: String
     phone: String 
     interests: [String]
+    about_me: String
     groups: [Group]!
     events: [Event] 
     invitations_received: [String] 

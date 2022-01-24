@@ -50,20 +50,19 @@ export const QUERY_SINGLE_FRIEND = gql`
   query singleFriend($friendId: ID!) {
     friend(friendId: $friendId) {
       _id
-      name
-      address
-      phone
-      email
-      interests
-      about_me
+      name,
+      phone,
+      email,
+      address,
+      interests,
+      about_me,
       groups {
-        _id 
-        name
+        name,
         description
-      }
+      },
       events {
-        _id 
-        name 
+        _id,
+        name,
         description
       }
     }

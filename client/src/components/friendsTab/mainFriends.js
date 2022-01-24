@@ -16,15 +16,16 @@ function MainFriends () {
   //     variables: { profileId: profileId },
   //   }
   // );
-  const profileId = '61ed72719a86f00514b73eb4';
-  const { loading2, data2 } = useQuery(
-    profileId ? QUERY_SINGLE_FRIEND : QUERY_ME,
-    {
-    variables: { profileId: profileId}
-    }
-  );
 
-  console.log(data2)
+  // const profileId = '61ed72719a86f00514b73eb4';
+  // const { loading2, data2 } = useQuery(
+  //   profileId ? QUERY_SINGLE_FRIEND : QUERY_ME,
+  //   {
+  //   variables: { profileId: profileId}
+  //   }
+  // );
+
+  // console.log(data2)
 
   const { loading, data } = useQuery(QUERY_FRIENDS);
   const people = data?.friends || [];

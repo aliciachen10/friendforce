@@ -4,7 +4,7 @@ import { QUERY_GROUPS } from '../utils/queries';
 function GroupsList(props) {
   const { loading, data } = useQuery(QUERY_GROUPS);
   const people = data?.groups || [];
-
+  console.log(Object.values(people));
 const handleGroupPageClick = () => {
   props.mainGroupSetter("grouppage")
 }
