@@ -4,6 +4,7 @@ import React, {useState} from "react";
 function FriendList(props) {
 
     const people = props.directory;
+    console.log()
 
     //Returns the Friend object corresponding to the friend clicked.
     const handleFriendPageClick = (e) => {
@@ -45,7 +46,7 @@ function FriendList(props) {
                 </thead>
                 <tbody>
                     {people.map((person, personIdx) => (
-                    <tr key={person.email} className={personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                    <tr key={person.IDx + person.email} className={personIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{person.name}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.email}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.phone}</td>

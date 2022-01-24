@@ -59,6 +59,8 @@ query getGroups {
     friends { 
       _id
       name
+      email
+      phone
     }
 
   }

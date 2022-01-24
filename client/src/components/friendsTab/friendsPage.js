@@ -5,15 +5,24 @@ import FriendSidebar from './friendsList-sidebar';
 import FriendGroups from './friends-Groups';
 import FriendEvents from './friends-Events';
 
+import { useQuery } from "@apollo/client";
+import { QUERY_SINGLE_GROUP } from '../utils/queries';
 
 function FriendsPage (props) {
 
   //TODO: Set by user clicking something in the list (frontend)
   const user = props.user;
   const directory = props.directory;
+  const eventID = props.user.events[0]._id;
 
   //TODO: Set by initial db call in useEffect (backend/frontend). Directory is a placeholder value.
   const [directoryState, setDirectory] = useState(directory);
+
+  //Broken for now; backend issues.
+  // const { loading, data } = useQuery(QUERY_SINGLE_GROUP, {
+  //   variables: {eventID}
+  // });
+
 
   //TODO: Set by initial db call in useEffect (backend/frontend). Groups is a placeholder value.
   const groups = [

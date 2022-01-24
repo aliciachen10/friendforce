@@ -3,12 +3,12 @@ import React, {useState} from 'react'
 import { CalendarIcon, LocationMarkerIcon, UsersIcon } from '@heroicons/react/solid'
 import GroupData from './group-Data';
 import GroupDescription from './group-Description'
-import GroupEvents from './group-Events';
+import GroupMembers from './group-Members';
 import CreateEvent from './create-Group';
 
 function GroupsPage (props) {
   const selectedGroup = props.group;
-  const groupDirectory = props.groupDirectory;
+  console.log(selectedGroup.friends)
 
   //Placeholder: need a useQuery to get events of a group.
   const events = [
@@ -50,7 +50,7 @@ function GroupsPage (props) {
           {/* Profile Pic and Name*/}
           <div className = "flex-col pb-2 self-center">
               <img className = "rounded-full max-h-32 pb-2 m-auto" src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"></img>
-              <div className = "text-lg text-center">{console.log(selectedGroup.name)}</div>
+              <div className = "text-lg text-center">{selectedGroup.name}</div>
           </div>
 
           <div className="flex flex-col flex-wrap space-x-4 space-y-4 justify-evenly p-4 xl:flex-row">
@@ -64,7 +64,7 @@ function GroupsPage (props) {
             
             {/* Events section--Idk how to get a specific group's events! */}
             <div className = "flex-grow w-full">
-              <GroupEvents events = {events}/>
+              <GroupMembers  group = {selectedGroup} />
             </div>
           </div>
       </div>
