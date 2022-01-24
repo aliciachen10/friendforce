@@ -30,9 +30,16 @@ function CreateEvent () {
    event.preventDefault();
    console.log("this works")
 
-  const arrayOfGibberish = ['61e8f075e326f3108c23e375']
-  const loggedInCreator = '61e8f075e326f3108c23e375'
-
+  const arrayOfGibberish = ['61ee13c13925462bc406eee7']
+  const loggedInCreator = '61ee13c13925462bc406eee7'
+  console.log(       JSON.stringify({
+    "name": formState.name,
+    "date": formState.date,
+    "location": formState.location,
+    "description": formState.description,
+    "friends": arrayOfGibberish,
+    "creator": loggedInCreator
+    }))
    try {
     //  const { data } = 
      await addEvent({
