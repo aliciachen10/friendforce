@@ -12,10 +12,13 @@ const resolvers = {
       return Friend.find().populate('groups').populate('events');
     },
     friend: async (parent, { profileId }) => {
-      return Friend.findOne({ id: profileId }).populate('groups');
+      return Friend.findOne({ _id: profileId }).populate('groups');
     },
     groups: async () => {
       return Group.find().populate('friends');
+    },
+    group: async (parent, { groupId}) => {
+      return Group.findOne({_id: groupId}).populate('friends');
     },
     invitationEvents: async () => {
       return InvitationEvent.find();
@@ -25,6 +28,12 @@ const resolvers = {
     },
     event: async (parent, { eventId }) => {
       return Event.findOne({ _id: eventId }).populate('friends');
+    },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return Friend.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
 

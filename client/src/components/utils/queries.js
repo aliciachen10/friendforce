@@ -9,6 +9,7 @@ query getFriends {
     email,
     address,
     interests,
+    about_me,
     groups {
       name,
       description
@@ -22,14 +23,38 @@ query getFriends {
 }
 `;
 
-export const QUERY_SINGLE_FRIEND = gql`
-  query singleFriend($id: ID!) {
-    friend(id: $id) {
+export const QUERY_ME = gql`
+  query me {
+    me {
       name
       address
       phone
       email
       interests
+      about_me
+      groups {
+        _id 
+        name
+        description
+      }
+      events {
+        _id 
+        name 
+        description
+      }
+    }
+  }
+`;
+
+export const QUERY_SINGLE_FRIEND = gql`
+  query singleFriend($profileId: ID!) {
+    friend(profileId: $profileId) {
+      name
+      address
+      phone
+      email
+      interests
+      about_me
       groups {
         _id 
         name
@@ -61,7 +86,7 @@ query getGroups {
 }
 `;
 
-export const QUERY_SINGLE_GROUP = gql `
+export const QUERY_SINGLE_GROUP = gql`
 query singleGroup($id: ID!) {
   group(id: $id) {
     name

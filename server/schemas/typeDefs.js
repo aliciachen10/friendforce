@@ -68,15 +68,15 @@ const typeDefs = gql`
   }
 
   type Query {
-    profiles: [Profile]!
-    profile(profileId: ID!): Profile
     event: Event
     events: [Event]
     friends: [Friend]
-    friend(id: ID!): Friend
+    friend(profileId: ID!): Friend
     groups: [Group]
+    group: Group
     invitationEvents: [InvitationEvent]
     invitationGroups: [InvitationGroup]
+    me: Friend
   }
 
   type Mutation {

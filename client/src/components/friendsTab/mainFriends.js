@@ -3,13 +3,27 @@ import FriendsPage from "./friendsPage";
 import FriendList from "../util/friendList";
 import Footer from "../util/footer"
 import { useQuery } from '@apollo/client';
-import { QUERY_FRIENDS } from '../utils/queries';
+import { QUERY_FRIENDS, QUERY_SINGLE_FRIEND, QUERY_ME } from '../utils/queries';
 /* MainFriends
     Controller for Friend tab's appearance. Clicking on a user in the list
     changes the activeFriend to a Friend object containing address, name,
     info, etc. This is used to activate and populate the FriendPage component.
 */
 function MainFriends () {
+  // const { loading, data } = useQuery(
+  //   profileId ? QUERY_SINGLE_PROFILE : QUERY_ME,
+  //   {
+  //     variables: { profileId: profileId },
+  //   }
+  // );
+  const { loading2, data2 } = useQuery(
+    profileId ? QUERY_SINGLE_FRIEND : QUERY_ME,
+    {
+    variables: { profileId: '61ed72719a86f00514b73eb4'}
+  });
+
+  console.log(data2)
+
   const { loading, data } = useQuery(QUERY_FRIENDS);
   const people = data?.friends || [];
 
