@@ -1,5 +1,4 @@
 import { gql } from '@apollo/client';
-//to do: need to add in REMOVE_EVENT, REMOVE_GROUP, REMOVE_FRIEND AND OTHER MUTATIONS IN THE FILE 
 
 export const ADD_FRIEND = gql`
 mutation addFriend($name: String!, $address: String, $email: String!, 
