@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { ADD_FRIEND } from '../utils/mutations';
+import { ADD_FRIEND, LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 import ffLogo from '../../img/ff.png';
 
 function SignUp(props) {
 
+  const [login, { error2, data2 }] = useMutation(LOGIN);
   const [formState, setFormState] = useState({ 
       name: '', 
       interests: '', 
@@ -23,7 +24,7 @@ function SignUp(props) {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const mutationResponse = await addFriend({
+      const data = await addFriend({
         variables: { 
             name: formState.name, 
             email: formState.email, 
@@ -34,8 +35,12 @@ function SignUp(props) {
             about_me: formState.about_me
         },
       });
+      const mutationResponse = await login({
+        variables: { email: formState.email, password: formState.password },
+      });
     const token = mutationResponse.data.login.token;
     Auth.login(token);
+    props.authenticate(true); // do we need this? 
     } catch (e) {
       console.log(e);
     }
@@ -132,7 +137,7 @@ function SignUp(props) {
                   autoComplete="phone"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="phone"
+                  placeholder="phone (format: 111-111-1111)"
                   onChange={handleChange}
                 />
               </div>
