@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_GROUPS } from '../utils/queries';
+import CreateGroup from './create-Group';
 
 function GroupsList(props) {
   const { loading, data } = useQuery(QUERY_GROUPS);

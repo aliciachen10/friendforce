@@ -2,7 +2,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_GROUP } from "../utils/mutations";
 import React, { useState } from 'react';
 
-function CreateGroup () {
+function CreateGroup (props) {
 
   const [formState, setFormState] = useState({
     name: '',
@@ -25,6 +25,7 @@ function CreateGroup () {
  const handleFormSubmit = async (event) => {
    event.preventDefault();
   //  console.log(formState);
+    props.setModalState(false);
 
 
    try { //       variables: { ...formState,}
@@ -44,7 +45,7 @@ function CreateGroup () {
 
     return (
 
-      <div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+      <div className="bg-gray-100 shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div className="md:grid md:grid-cols-3 md:gap-6">
         <div className="md:col-span-1">
           <h3 className="text-lg font-medium leading-6 text-gray-900">Personal Group Information</h3>
@@ -115,11 +116,12 @@ function CreateGroup () {
 
               </div>
               <button
-        type="submit"
-        className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-      >
-        Create Group
-      </button>
+                type="submit"
+
+                className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Create Group
+              </button>
           </form>
           
           

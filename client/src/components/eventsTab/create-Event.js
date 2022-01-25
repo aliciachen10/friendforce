@@ -2,7 +2,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
 import React, { useState } from 'react';
 
-function CreateEvent () {
+function CreateEvent (props) {
   // $name: String!, $date:String, $location:String, 
 	// 	$description:String, $friends:[ID], $creator:String
   const [formState, setFormState] = useState({
@@ -27,6 +27,8 @@ function CreateEvent () {
 
  const handleFormSubmit = async (event) => {
    event.preventDefault();
+
+   props.setModalState(false);
 
    const arrayOfGibberish = ['61e8f075e326f3108c23e375']
    const loggedInCreator = '61e8f075e326f3108c23e375'
