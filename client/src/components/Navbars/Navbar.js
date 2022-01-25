@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import ffLogo from '../../img/ff.png';
 import ffText from '../../img/ff_text.png';
+import Auth from '../utils/auth';
 
 /* Navbar.js
    The navigation bar at the top of the app. Can set the App state so that the component
@@ -16,6 +17,13 @@ function Navbar(props) {
   const logout = () => {
     localStorage.clear();
     window.location.href = '/';
+  }
+  let bigassLogoutButton;
+
+  if (Auth.loggedIn()) {
+    bigassLogoutButton = <NavLink to="/" className={({isActive})=>(isActive ? selectedTabClass : unselectedTabClass )} onClick={logout}>Log Out</NavLink>;
+  } else {
+    bigassLogoutButton = <div></div>;
   }
   
   return (
@@ -66,7 +74,9 @@ function Navbar(props) {
             </button>
 
             <div className="ml-3 relative">
-            <NavLink to="/" className={({isActive})=>(isActive ? selectedTabClass : unselectedTabClass )} onClick={logout}>Log Out</NavLink>
+            {/* return loading ? (<div>loading...</div>) : ( */}
+            {bigassLogoutButton}
+            {/* <NavLink to="/" className={({isActive})=>(isActive ? selectedTabClass : unselectedTabClass )} onClick={logout}>Log Out</NavLink> */}
             </div>
           </div>
 
