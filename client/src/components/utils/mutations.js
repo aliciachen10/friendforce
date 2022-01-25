@@ -28,7 +28,9 @@ mutation addEvent($name: String!, $date:String, $location:String,
     friends {
       name
     }
-    creator
+    creator {
+      name 
+    }
 	}
 }
 `;

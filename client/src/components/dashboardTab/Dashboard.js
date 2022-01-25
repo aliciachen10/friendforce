@@ -5,6 +5,8 @@ import { useQuery } from '@apollo/client';
 import { QUERY_FRIENDS, QUERY_SINGLE_FRIEND, QUERY_ME, QUERY_SINGLE_EVENT, QUERY_GROUPS } from '../utils/queries';
 import Footer from '../util/footer';
 import Auth from '../utils/auth';
+import FriendGroup from '../friendsTab/friends-Groups';
+import FriendEvent from '../friendsTab/friends-Events';
 
 function Dashboard() {
   // //this is working code below now 
@@ -37,20 +39,10 @@ function Dashboard() {
                     </section>
                     {/* To be replaced with DashboardGroup  */}
                     <section className="bg-white w-full rounded-lg p-4 shadow-sm">
-                        <div className = "font-semibold text-lg mb-4 pb-1 border-b-2 border-gray-200">
-                            Groups
-                        </div>
-                        <div>{friend.groups.map((group) => (
-                          <ul>{group.name}</ul>
-                        ))}</div>
+                        <FriendGroup user = {friend}/>
                     </section>
                     <section className="bg-white w-full rounded-lg p-4 shadow-sm">
-                        <div className = "font-semibold text-lg mb-4 pb-1 border-b-2 border-gray-200">
-                            Upcoming Events
-                        </div>
-                        <div>{friend.events.map((event) => (
-                          <ul>{event.name}</ul>
-                        ))}</div>
+                        <FriendEvent user = {friend}/>
                     </section>
                 </div>
             </div>

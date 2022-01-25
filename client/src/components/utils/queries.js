@@ -68,6 +68,8 @@ export const QUERY_SINGLE_FRIEND = gql`
         _id,
         name,
         description
+        location
+        date
       }
     }
   }
@@ -121,6 +123,8 @@ query getEvents {
     friends {
       _id
       name
+      email
+      phone
     }
     creator {
       _id
