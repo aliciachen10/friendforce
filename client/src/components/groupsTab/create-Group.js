@@ -1,8 +1,10 @@
 import { useMutation } from "@apollo/client";
 import { ADD_GROUP } from "../utils/mutations";
 import React, { useState } from 'react';
+import Auth from '../utils/auth';
 
 function CreateGroup (props) {
+  const friendId = Auth.getProfile().data._id
 
   const [formState, setFormState] = useState({
     name: '',
@@ -34,7 +36,7 @@ function CreateGroup (props) {
        "name": formState.name,
        "description": formState.description,
        "interests": [formState.interests],
-      //  "friends": ["61ee13c13925462bc406eee7"]
+       "friends": [friendId]
       }
      });
    } catch (e) {

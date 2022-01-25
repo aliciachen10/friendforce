@@ -1,6 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
 import React, { useState } from 'react';
+import Auth from '../utils/auth';
 
 function CreateEvent (props) {
   // $name: String!, $date:String, $location:String, 
@@ -32,8 +33,11 @@ function CreateEvent (props) {
 
   //  const arrayOfGibberish = ['61e8f075e326f3108c23e375']
   //  const loggedInCreator = '61e8f075e326f3108c23e375'
+  const friendId = Auth.getProfile().data._id
+  console.log(friendId)
 
    try {
+    
     //  const { data } = 
      await addEvent({
        variables: {
@@ -41,8 +45,8 @@ function CreateEvent (props) {
        "date": formState.date,
        "location": formState.location,
        "description": formState.description,
-      //  "friends": arrayOfGibberish,
-      //  "creator": loggedInCreator
+       "friends": [friendId],
+       "creator": friendId
        }
      });
    } catch (e) {
@@ -56,7 +60,7 @@ function CreateEvent (props) {
       <div className="md:grid md:grid-cols-3 md:gap-6">
         <div className="md:col-span-1">
           <h3 className="text-lg font-medium leading-6 text-gray-900">Personal Event Information</h3>
-          <p className="mt-1 text-sm text-gray-500">Use a permanent address where you can receive mail.</p>
+          <p className="mt-1 text-sm text-gray-500">Tell us about your event here.</p>
         </div>
         <div className="mt-5 md:mt-0 md:col-span-2">
           <form onSubmit={handleFormSubmit}>
@@ -136,7 +140,7 @@ function CreateEvent (props) {
                 />
               </div>
 
-              <div className="col-span-6 sm:col-span-4">
+              {/* <div className="col-span-6 sm:col-span-4">
                 <label htmlFor="email-address" className="block text-sm font-medium text-gray-700">
                   Creator
                 </label>
@@ -149,7 +153,7 @@ function CreateEvent (props) {
                   value={formState.creator}
                   onChange={handleChange}
                 />
-              </div>
+              </div> */}
 
               </div>
               <button
