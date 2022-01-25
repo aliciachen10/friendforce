@@ -47,7 +47,7 @@ const resolvers = {
       return newEvent;
     },
     addFriend: async (parent, { name, address, email, phone, about_me, interests, password }) => {
-      const friend = await Friend.create({name, address, email, phone, about_me, interests, password})
+      const friend = await Friend.create({name, address, email, phone, about_me, interests, password});
       const token = signToken(friend);
       return { friend, token };
     },

@@ -10,8 +10,12 @@ function SignUp(props) {
 
   const [formState, setFormState] = useState({ 
       name: '', 
-      email: '', 
-      password: '' 
+      interests: '', 
+      password: '',
+      phone: '',
+      address: '',
+      interests: '',
+      about_me: '',
     });
 
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
@@ -19,18 +23,23 @@ function SignUp(props) {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      await addFriend({
+      const mutationResponse = await addFriend({
         variables: { 
             name: formState.name, 
             email: formState.email, 
-            password: formState.password 
+            password: formState.password,
+            phone: formState.phone,
+            address: formState.address,
+            interests: formState.interests,
+            about_me: formState.about_me
         },
       });
+    const token = mutationResponse.data.login.token;
+    Auth.login(token);
     } catch (e) {
       console.log(e);
     }
-    const token = mutationResponse.data.login.token;
-    Auth.login(token);
+    
   };
 
   const handleChange = (event) => {
@@ -97,7 +106,69 @@ function SignUp(props) {
                   onChange={handleChange}
                 />
               </div>
+              <div>
+                <label htmlFor="address" className="sr-only">
+                  Address
+                </label>
+                <input
+                  id="address"
+                  name="address"
+                  type="address"
+                  autoComplete="address"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Address"
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="phone-address" className="sr-only">
+                  Phone
+                </label>
+                <input
+                  id="phone-address"
+                  name="phone"
+                  type="phone"
+                  autoComplete="phone"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="phone"
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="about-me" className="sr-only">
+                  About Me
+                </label>
+                <input
+                  id="about-me"
+                  name="about-me"
+                  type="about-me"
+                  autoComplete="about-me"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="About Me"
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="interests" className="sr-only">
+                  Interests
+                </label>
+                <input
+                  id="interests"
+                  name="interests"
+                  type="interests"
+                  autoComplete="interests"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="interests"
+                  onChange={handleChange}
+                />
+              </div>
             </div>
+
+            
 
               <div className="text-sm">
                 <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500">

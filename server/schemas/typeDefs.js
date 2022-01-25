@@ -33,6 +33,7 @@ const typeDefs = gql`
     events: [Event] 
     invitations_received: [String] 
     invitations_sent: [String]
+    password: String
   }
 
   type Group {
