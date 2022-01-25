@@ -142,14 +142,14 @@ function SignUp(props) {
                 />
               </div>
               <div>
-                <label htmlFor="about-me" className="sr-only">
+                <label htmlFor="about_me" className="sr-only">
                   About Me
                 </label>
                 <input
                   id="about-me"
-                  name="about-me"
-                  type="about-me"
-                  autoComplete="about-me"
+                  name="about_me"
+                  type="about_me"
+                  autoComplete="about_me"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="About Me"
