@@ -127,17 +127,17 @@ function SignUp(props) {
                 />
               </div>
               <div>
-                <label htmlFor="phone-address" className="sr-only">
+                <label htmlFor="tel" className="sr-only">
                   Phone
                 </label>
                 <input
-                  id="phone-address"
-                  name="phone"
-                  type="phone"
-                  autoComplete="phone"
-                  required
+                  id="tel"
+                  name="tel"
+                  type="tel"
+                  autoComplete="tel"
+                  pattern="\d{3}-\d{3}-\d{4}"
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="phone (format: 111-111-1111)"
+                  placeholder="Phone number (format: 111-111-1111)"
                   onChange={handleChange}
                 />
               </div>

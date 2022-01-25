@@ -31,7 +31,7 @@ const friendSchema = new Schema({
     unique: true,
     trim: true,
     //use a regex to match below here
-    match: [/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, "Please enter a valid phone number"]
+    // match: [/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, "Please enter a valid phone number"]
   },
   about_me: {
     type: String,
