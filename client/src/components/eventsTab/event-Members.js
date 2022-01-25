@@ -1,15 +1,12 @@
-//A component that lists all the friends in a prop.friendArray
-import React, {useState} from "react";
+function EventMembers(props) {
 
-function GroupMembers(props) {
-
-    const people = props.group.friends;
-
+    const people = props.event.friends;
+    console.log(people)
 
     return (
         <div className="flex flex-col">
             <div>
-                <h3 className="text-lg  pb-2 leading-6 font-medium text-gray-900 ">Members</h3>
+                <h3 className="text-lg  pb-2 leading-6 font-medium text-gray-900 ">Attending</h3>
             </div>
             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -56,4 +53,4 @@ function GroupMembers(props) {
     )
 }
 
-export default GroupMembers;
+export default EventMembers;
