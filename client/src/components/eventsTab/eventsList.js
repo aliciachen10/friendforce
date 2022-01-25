@@ -63,7 +63,7 @@ function EventsList(props) {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{event.name}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{event.date}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{event.location}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{event.description}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{event.description.slice(0,80) + (event.description.length > 80 ? '...': '')}</td>
                     {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.friends.map(
                       (friend) => (
                         <ul>{friend}</ul>

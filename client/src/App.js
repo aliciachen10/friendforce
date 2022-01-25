@@ -53,7 +53,7 @@ function App() {
 
   useEffect(() => {
     const u = localStorage.getItem("user");
-    u && JSON.parse(u) ? setUser(true) : setUser(true); //SWITCH SECOND ONE BACK TO FALSE
+    u && JSON.parse(u) ? setUser(true) : setUser(false); //SWITCH SECOND ONE BACK TO FALSE
   }, []);
 
   useEffect(() => {
