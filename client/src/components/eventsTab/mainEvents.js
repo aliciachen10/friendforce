@@ -32,7 +32,7 @@ function MainGroups () {
         <div className="relative min-h-screen bg-gray-200 ">
             <div className = "flex flex-col">
                 <div onClick = {() => setModal(true)} className = {"w-48 mt-4 -mb-4 ml-8 p-2 bg-indigo-700 text-white rounded-lg hover:cursor-pointer " + (modalIsOpen ? 'opacity-50' : "")}>
-                    <div>+ Create New Group</div>
+                    <div>+ Create New Event</div>
                 </div>
                 {/* modal */}
                 {modalIsOpen ? (                

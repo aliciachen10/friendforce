@@ -30,8 +30,8 @@ function CreateEvent (props) {
 
    props.setModalState(false);
 
-   const arrayOfGibberish = ['61e8f075e326f3108c23e375']
-   const loggedInCreator = '61e8f075e326f3108c23e375'
+  //  const arrayOfGibberish = ['61e8f075e326f3108c23e375']
+  //  const loggedInCreator = '61e8f075e326f3108c23e375'
 
    try {
     //  const { data } = 
@@ -41,8 +41,8 @@ function CreateEvent (props) {
        "date": formState.date,
        "location": formState.location,
        "description": formState.description,
-       "friends": arrayOfGibberish,
-       "creator": loggedInCreator
+      //  "friends": arrayOfGibberish,
+      //  "creator": loggedInCreator
        }
      });
    } catch (e) {
@@ -55,7 +55,7 @@ function CreateEvent (props) {
       <div className="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
       <div className="md:grid md:grid-cols-3 md:gap-6">
         <div className="md:col-span-1">
-          <h3 className="text-lg font-medium leading-6 text-gray-900">Personal Group Information</h3>
+          <h3 className="text-lg font-medium leading-6 text-gray-900">Personal Event Information</h3>
           <p className="mt-1 text-sm text-gray-500">Use a permanent address where you can receive mail.</p>
         </div>
         <div className="mt-5 md:mt-0 md:col-span-2">

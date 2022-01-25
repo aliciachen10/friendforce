@@ -34,7 +34,7 @@ function CreateGroup (props) {
        "name": formState.name,
        "description": formState.description,
        "interests": [formState.interests],
-       "friends": ["61e8f075e326f3108c23e375"]
+      //  "friends": ["61ee13c13925462bc406eee7"]
       }
      });
    } catch (e) {
