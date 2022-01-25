@@ -12,6 +12,11 @@ function Navbar(props) {
 
   const selectedTabClass = "bg-indigo-700 text-white px-3 py-2 top-0  rounded-md text-sm font-medium";
   const unselectedTabClass = "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium";
+
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = '/';
+  }
   
   return (
     <nav className="bg-gray-800">
@@ -76,11 +81,9 @@ function Navbar(props) {
                 Leaving: "transition ease-in duration-75"
                   From: "transform opacity-100 scale-100"
                   To: "transform opacity-0 scale-95" */}
-              {/* <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" tabIndex="-1">
-                <a href="https://github.com/" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-0">Your Profile</a>
-                <a href="https://github.com/" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-1">Settings</a>
-                <a href="https://github.com/" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-2">Sign out</a>
-              </div> */}
+              <div className="z-50 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" tabIndex="-1">
+                <NavLink to="/" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="user-menu-item-0" onClick={logout}>Log Out</NavLink>
+              </div>
             </div>
           </div>
 
