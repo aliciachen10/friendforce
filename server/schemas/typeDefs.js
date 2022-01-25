@@ -12,8 +12,8 @@ const typeDefs = gql`
   type Event {
     _id: ID
     name: String 
-    date_created: Date 
     date: Date
+    date_created: Date
     location: String
     description: String 
     friends: [Friend]
@@ -27,8 +27,8 @@ const typeDefs = gql`
     address: String
     email: String
     phone: String 
-    interests: [String]
     about_me: String
+    interests: [String]
     groups: [Group]!
     events: [Event] 
     invitations_received: [String] 

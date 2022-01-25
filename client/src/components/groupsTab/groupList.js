@@ -6,7 +6,6 @@ function GroupsList(props) {
   const people = data?.groups || [];
 
   const groups = props.groupDirectory;
-  console.log(groups)
 
   //Returns the Friend object corresponding to the friend clicked.
   const handleGroupListClick = (e) => {
@@ -53,7 +52,6 @@ function GroupsList(props) {
                     <td className="px-6 py-4  text-sm font-medium text-gray-900">{group.name}</td>
                     <td className="px-6 py-4  text-sm text-gray-500">{group.description}</td>
                     <td className="px-6 py-4  text-sm text-gray-500">{group.interests}</td>
-
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <a href="#" name = {group.name} onClick={handleGroupListClick} className="text-indigo-600 hover:text-indigo-900">
                         View

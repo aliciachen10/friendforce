@@ -4,17 +4,7 @@ import { useQuery } from "@apollo/client";
 import {QUERY_GROUPS, QUERY_SINGLE_GROUP} from '../utils/queries';
 
 function GroupData (props) {
-  console.log(props.s)
 
-  const { loading, data } = useQuery(QUERY_GROUPS);
-  const group = data?.groups[0] || [];
-
-  const [canUpdate, setUpdate] = useState(false);
-  const [savedName, setName]          = useState(group.name)
-  const [savedInterest, setInterest]       = useState(group.interests); 
-  const [savedDateCreated, setDateCreated]       = useState(group.date_created);
-
-  console.log(group)
 
 
   return ( 
@@ -52,10 +42,6 @@ function GroupData (props) {
     </div> 
    
 )
-
-
-
-
 
 }
 
