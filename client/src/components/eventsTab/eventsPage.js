@@ -3,7 +3,7 @@ import { CalendarIcon, LocationMarkerIcon, UsersIcon } from '@heroicons/react/so
 import EventData from './event-Data'
 import EventDescription from './event-Description'
 import CreateEvent from './create-Event';
-// import CreateEventModal from './create-Event-Modal';
+
 
 function EventsPage () {
 
@@ -294,11 +294,9 @@ function EventsPage () {
 
 
    <div className="col-span-4"> 
-   <CreateEvent/>
+
             
     <> 
-    {/*  */}
-   
      <div className="grid grid-cols-2 gap-10">
    
    <EventData/>
@@ -372,7 +370,7 @@ function EventsPage () {
 
       </div>
     </>
-        
+          <CreateEvent/>
     </div>
     </div>
     </div>
