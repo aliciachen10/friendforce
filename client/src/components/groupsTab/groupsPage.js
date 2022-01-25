@@ -43,6 +43,7 @@ function GroupsPage (props) {
   const [eventsState, setEvents] = useState(events)
   
   return (
+    <>
     <div className="flex flex-row space-x-4 p-4 m-4 lg:mx-4 bg-white rounded-lg shadom-sm overflow-auto">
       {/* Everything besides the scrolling sidebar */}
       <div className="flex flex-col mx-auto bg-white p-4 m-4 space-x-4  max-h-screen mb-16">
@@ -71,61 +72,64 @@ function GroupsPage (props) {
             ))}
           </ul>
           
-        </div>
-      ))}
-    </nav>
+      </div>
+      {/* ))} */}
+    {/* </nav> */}
     </div>
 
 
    <div className="col-span-4"> 
     <CreateGroup/>
-            
-    <> 
      <div className="grid grid-cols-2 gap-10">
     
               <GroupData/>
       {/* end of first details container*/}
       <GroupDescription/> 
 
-  <div> 
-      <div>
-        <h3 className="text-lg leading-6 font-medium text-gray-900">Groups</h3>
-       
-      </div>
-      <ul role="list" className="divide-y divide-gray-200">
-      {people.map((person) => (
-        <li key={person.email} className="py-4 flex">
-          <div className="ml-3">
-            <p className="text-sm font-medium text-gray-900">{person.name}</p>
-            <p className="text-sm text-gray-500">{person.email}</p>
-
-
-          <div className="flex flex-col flex-wrap space-x-4 space-y-4 justify-evenly p-4 xl:flex-row">
-            <div className = "flex-grow xl:w-2/5">
-              <GroupData selectedGroup = {selectedGroup}/>
-            </div>
-
-            <div className = "flex-grow xl:w-2/5">
-              <GroupDescription selectedGroup = {selectedGroup}/>
-            </div>
-            
-            {/* Events section--Idk how to get a specific group's events! */}
-            <div className = "flex-grow w-full">
-              <GroupEvents events = {events}/>
-            </div>
-
+      <div> 
+          <div>
+            <h3 className="text-lg leading-6 font-medium text-gray-900">Groups</h3>
+          
           </div>
-      </div>
-    </>
-  
+          <ul role="list" className="divide-y divide-gray-200">
+          {people.map((person) => (
+            <li key={person.email} className="py-4 flex">
+              <div className="ml-3">
+                <p className="text-sm font-medium text-gray-900">{person.name}</p>
+                <p className="text-sm text-gray-500">{person.email}</p>
+
+
+                <div className="flex flex-col flex-wrap space-x-4 space-y-4 justify-evenly p-4 xl:flex-row">
+                  <div className = "flex-grow xl:w-2/5">
+                    <GroupData selectedGroup = {selectedGroup}/>
+                  </div>
+
+                  <div className = "flex-grow xl:w-2/5">
+                    <GroupDescription selectedGroup = {selectedGroup}/>
+                  </div>
+                  
+                  {/* Events section--Idk how to get a specific group's events! */}
+                  <div className = "flex-grow w-full">
+                    <GroupEvents events = {events}/>
+                  </div>
+
+                </div>
+              </div>
+            </li>
+          
       
-   
-    </div>
+          
+      
+      </div>
     </div>
 
     </div>
+
+    </>
   )
+  
 }
+</ul>
 
 export default GroupsPage;
 
