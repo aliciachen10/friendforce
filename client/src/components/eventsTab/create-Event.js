@@ -1,5 +1,6 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, refetch } from "@apollo/client";
 import { ADD_EVENT } from "../utils/mutations";
+import { QUERY_EVENTS } from "../utils/queries";
 import React, { useState } from 'react';
 import Auth from '../utils/auth';
 
@@ -15,7 +16,12 @@ function CreateEvent (props) {
     creator: ''
   });
 
-  const [addEvent, {error, data}] = useMutation(ADD_EVENT);
+  const [addEvent, {error, data}] = useMutation(ADD_EVENT, 
+    {
+      refetchQueries: [
+        {query:QUERY_EVENTS}
+      ]
+    });
 
  const handleChange = (event) => {
    const { name, value } = event.target;
@@ -28,7 +34,6 @@ function CreateEvent (props) {
 
  const handleFormSubmit = async (event) => {
    event.preventDefault();
-
    props.setModalState(false);
 
   //  const arrayOfGibberish = ['61e8f075e326f3108c23e375']
@@ -37,7 +42,6 @@ function CreateEvent (props) {
   console.log(friendId)
 
    try {
-    
     //  const { data } = 
      await addEvent({
        variables: {

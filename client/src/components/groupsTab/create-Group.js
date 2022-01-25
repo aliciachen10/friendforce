@@ -2,6 +2,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_GROUP } from "../utils/mutations";
 import React, { useState } from 'react';
 import Auth from '../utils/auth';
+import { QUERY_GROUPS } from "../utils/queries";
 
 function CreateGroup (props) {
   const friendId = Auth.getProfile().data._id
@@ -13,7 +14,12 @@ function CreateGroup (props) {
     friends: '',
   });
 
-  const [addGroup, {error, data}] = useMutation(ADD_GROUP);
+  const [addGroup, {error, data}] = useMutation(ADD_GROUP,
+    {
+      refetchQueries: [
+        {query:QUERY_GROUPS}
+      ]
+    });
 
  const handleChange = (event) => {
    const { name, value } = event.target;
