@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
@@ -6,12 +7,10 @@ import Auth from '../utils/auth';
 import { LockClosedIcon } from '@heroicons/react/solid'
 import ffLogo from '../../img/ff.png';
 
-
-
 function Login(props) {
 
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error }] = useMutation(LOGIN);
+  const [login, { error, data }] = useMutation(LOGIN);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -91,9 +90,9 @@ function Login(props) {
               </div>
 
               <div className="text-sm">
-                <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                  Forgot your password?
-                </a>
+                <Link to="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
+                    Don't have an account? Sign Up!
+                </Link>
               </div>
             </div>
 

@@ -3,16 +3,10 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   scalar Date 
 
-  type Profile {
-    _id: ID
-    name: String
-    email: String
-    password: String
-  }
-
   type Auth {
     token: ID!
     profile: Friend
+    friend: Friend
   }
  
   type Event {
@@ -39,6 +33,7 @@ const typeDefs = gql`
     events: [Event] 
     invitations_received: [String] 
     invitations_sent: [String]
+    password: String
   }
 
   type Group {
@@ -69,15 +64,15 @@ const typeDefs = gql`
   }
 
   type Query {
-    profiles: [Profile]!
-    profile(profileId: ID!): Profile
     event: Event
     events: [Event]
     friends: [Friend]
-    friend(id: ID!): Friend
+    friend(friendId: ID!): Friend
     groups: [Group]
+    group: Group
     invitationEvents: [InvitationEvent]
     invitationGroups: [InvitationGroup]
+    me: Friend
   }
 
   type Mutation {

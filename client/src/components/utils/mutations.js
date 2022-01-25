@@ -3,15 +3,16 @@ import { gql } from '@apollo/client';
 
 export const ADD_FRIEND = gql`
 mutation addFriend($name: String!, $address: String, $email: String!, 
-  $phone: String, $interests: [String]) {
+  $phone: String, $interests: [String], $password: String) {
 	addFriend(name: $name, address: $address, email:$email, 
-    phone:$phone, interests: $interests) {
+    phone:$phone, interests: $interests, password: $password) {
 		_id
 		name
     address
     email
     phone
 		interests
+    password
 	}
 }`;
 
@@ -68,4 +69,3 @@ export const LOGIN = gql`
     }
   }
 `;
-

@@ -11,11 +11,16 @@ const resolvers = {
     friends: async () => {
       return Friend.find().populate('groups').populate('events');
     },
-    friend: async (parent, { profileId }) => {
-      return Friend.findOne({ id: profileId }).populate('groups');
+    friend: async (parent, { friendId }) => {
+      const result = await Friend.findOne({ _id: friendId }).populate('groups').populate('events');
+
+      return result;
     },
     groups: async () => {
       return Group.find().populate('friends');
+    },
+    group: async (parent, { groupId}) => {
+      return Group.findOne({_id: groupId}).populate('friends');
     },
     invitationEvents: async () => {
       return InvitationEvent.find();
@@ -26,6 +31,14 @@ const resolvers = {
     event: async (parent, { eventId }) => {
       return Event.findOne({ _id: eventId }).populate('friends');
     },
+    me: async (parent, args, context) => {
+      console.log("context", context.user)
+      if (context.user) {
+        console.log("context.user", context.user)
+        return Friend.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
@@ -34,10 +47,9 @@ const resolvers = {
       return newEvent;
     },
     addFriend: async (parent, { name, address, email, phone, about_me, interests, password }) => {
-      const friend = await Friend.create({name, address, email, phone, about_me, interests, password})
-      // const token = signToken(friend); -- jennifer, not sure if this will be useful to you with auth stuff 
-      // return { token, friend };
-      return friend;
+      const friend = await Friend.create({name, address, email, phone, about_me, interests, password});
+      const token = signToken(friend);
+      return { friend, token };
     },
     addGroup: async (parent, { name, description, friends, interests }) => {
       return await Group.create({ name, description, friends, interests });

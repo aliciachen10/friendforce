@@ -20,6 +20,7 @@ import Dashboard from './components/dashboardTab/Dashboard'
 import MainEvents from './components/eventsTab/mainEvents';
 import MainGroups from './components/groupsTab/mainGroups';
 import Login from './components/loginPage/loginPage';
+import SignUp from './components/signupPage/signupPage';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -48,7 +49,6 @@ const client = new ApolloClient({
 */
 function App() {
   const [user, setUser] = useState(null);
-
   const handleSetUser = (newUser) => setUser(newUser);
 
   useEffect(() => {
@@ -65,10 +65,16 @@ function App() {
       <Navbar />
       <Routes>
         {!user && (
-          <Route 
+          <>
+            <Route 
             path="/login" 
             element={<Login authenticate={handleSetUser} />} 
-          />
+            />
+            <Route 
+            path="/signup" 
+            element={<SignUp authenticate={handleSetUser} />} 
+            />
+          </>
         )}
         {user && (
           <>
